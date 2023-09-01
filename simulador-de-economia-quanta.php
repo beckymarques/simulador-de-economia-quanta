@@ -24,15 +24,16 @@ if (!class_exists('SE_Quanta')) {
             add_action('admin_menu', array($this, 'add_menu'));
 
             // Inclua os arquivos necessários
-            require_once(SEQ_PLUGIN_PATH . 'includes/functions/scripts.php');
-            //require_once (SEQ_PLUGIN_PATH . 'includes/functions/hubspot-integration.php');
-            //require_once(SEQ_PLUGIN_PATH . 'includes/views/form-template.php');
-            require_once (SEQ_PLUGIN_PATH . 'includes/views/result-positive.php');
-            require_once (SEQ_PLUGIN_PATH . 'includes/views/result-negative.php');
+            require_once(SEQ_PLUGIN_PATH . 'includes/functions/functions.php');
             require_once(SEQ_PLUGIN_PATH . 'includes/classes/class.Settings.php');
             $SEQ_Settings = new SEQ_Settings();
             require_once(SEQ_PLUGIN_PATH . 'includes/classes/class.Shortcode.php');
             $SEQ_Shortcode = new SEQ_Shortcode();
+            require_once(SEQ_PLUGIN_PATH . 'includes/classes/class.Calculation.php');
+            $SEQ_Calculation = new SEQ_Calculation();
+
+            //Add os scripts
+            add_action('wp_enqueue_scripts', array($this, 'seq_enqueue_scripts'), 999);
         }
 
         public function define_constants()
@@ -61,7 +62,7 @@ if (!class_exists('SE_Quanta')) {
             // Coloque código de limpeza, remoção de tabelas, etc. aqui
         }
 
-        //Função que cria o menu do plugin no painel do WordPress
+        //Cria o menu do plugin no painel do WordPress
         public function add_menu()
         {
             add_menu_page(
@@ -75,12 +76,31 @@ if (!class_exists('SE_Quanta')) {
             );
         }
 
+        /**
+         * Add view da página do plugin no painel do WordPress
+         */
         public function seq_settings_page()
         {
             if (!current_user_can('manage_options')) {
                 return;
             }
             require(SEQ_PLUGIN_PATH . 'includes/views/settings-page.php');
+        }
+
+        /**
+         * Enqueue scripts
+         */
+        public function seq_enqueue_scripts()
+        {
+            wp_register_style('se-bootstrap', SEQ_PLUGIN_URL . 'vendor/bootstrap.min.css');
+            wp_register_style('se-choices', 'https://cdn.jsdelivr.net/npm/choices.js@9.0.1/public/assets/styles/choices.min.css');
+            wp_register_style('se-plugin-style', SEQ_PLUGIN_URL . 'assets/css/style.min.css');
+
+            wp_register_script('se-jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', array(''), SEQ_PLUGIN_VERSION, true);
+            wp_register_script('se-script-maskmoney', SEQ_PLUGIN_URL . 'vendor/jquery.maskMoney.min.js', array('jquery'), SEQ_PLUGIN_VERSION, true);
+            wp_register_script('se-script-mask', SEQ_PLUGIN_URL . 'vendor/jquery.mask.min.js', array('jquery'), SEQ_PLUGIN_VERSION, true);
+            wp_register_script('se-script-choices', 'https://cdn.jsdelivr.net/npm/choices.js@9.0.1/public/assets/scripts/choices.min.js', array('jquery'), SEQ_PLUGIN_VERSION, true);
+            wp_register_script('se-plugin-script', SEQ_PLUGIN_URL . 'assets/js/script.js', array('jquery'), SEQ_PLUGIN_VERSION, true);
         }
     }
 }

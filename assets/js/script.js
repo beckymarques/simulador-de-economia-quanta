@@ -4,7 +4,7 @@ let stepTitle = document.getElementsByClassName("step-title");
 let prevBtn = document.getElementById("prev-btn");
 let nextBtn = document.getElementById("next-btn");
 let submitBtn = document.getElementById("submit-btn");
-let form = document.getElementsByTagName("form")[0];
+let form = document.getElementById("form-wrapper")
 let preloader = document.getElementById("preloader-wrapper");
 let bodyElement = document.querySelector("body");
 let succcessDiv = document.getElementById("success");
@@ -121,12 +121,12 @@ submitBtn.addEventListener("click", () => {
 });
 
 //Format label inputs
-gastos_mensais_valor = $('input[name="gastos_mensais_valor"]');
-gastos_mensais_unidades_valor = $(
+gastos_mensais_valor = jQuery('input[name="gastos_mensais_valor"]');
+gastos_mensais_unidades_valor = jQuery(
   'input[name="gastos_mensais_unidades_valor"]'
 );
-valor_demanda_kwh = $("#valor_demanda_kwh");
-$(function () {
+valor_demanda_kwh = jQuery("#valor_demanda_kwh");
+jQuery(function () {
   gastos_mensais_valor.maskMoney({
     prefix: "R$ ",
     thousands: ".",
@@ -146,17 +146,17 @@ $(function () {
     precision: 0,
   });
 
-  let possui_demanda = $('input[name="possui_demanda"]');
-  valor_demanda_kwh = $("#valor_demanda_kwh");
+  let possui_demanda = jQuery('input[name="possui_demanda"]');
+  valor_demanda_kwh = jQuery("#valor_demanda_kwh");
   possui_demanda.change(function (e) {
-    let valor = $(this).val();
+    let valor = jQuery(this).val();
     if (valor === "sim") {
-      $(".valor_demanda_kwh").removeClass("d-none").fadeIn();
-      $("#valor_demanda_kwh").attr("required", true);
+      jQuery(".valor_demanda_kwh").removeClass("d-none").fadeIn();
+      jQuery("#valor_demanda_kwh").attr("required", true);
       distribuidora.attr("required", true);
     } else {
-      $(".valor_demanda_kwh").fadeOut();
-      $("#valor_demanda_kwh").attr("required", false);
+      jQuery(".valor_demanda_kwh").fadeOut();
+      jQuery("#valor_demanda_kwh").attr("required", false);
       distribuidora.attr("required", false);
     }
   });
@@ -238,10 +238,10 @@ var behavior = function (val) {
     },
   };
 
-$("#phone").mask(behavior, options);
+jQuery("#phone").mask(behavior, options);
 
 //Disable enter key
-$(document).keypress(function (event) {
+jQuery(document).keypress(function (event) {
   if (event.which == "13") {
     event.preventDefault();
   }
