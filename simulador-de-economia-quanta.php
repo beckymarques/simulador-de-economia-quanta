@@ -59,7 +59,8 @@ if (!class_exists('SE_Quanta')) {
         // Função que será executada na desinstalação do plugin
         public static function seq_uninstall()
         {
-            // Coloque código de limpeza, remoção de tabelas, etc. aqui
+            if (!get_option('seq_uninstall', false)) exit;
+            delete_option('seq_options');
         }
 
         //Cria o menu do plugin no painel do WordPress
