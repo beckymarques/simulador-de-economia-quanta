@@ -95,23 +95,17 @@ if (!class_exists('SEQ_Settings')) {
         public function seq_shortcode_callback()
         { ?>
 <span id="seq_shortcode">Use o shortcode [simulador_de_economia] para exibir o Simulador de Economia Quanta em qualquer
-	local.</span>
+    local.</span>
 <?php
         }
 
         //Conteúdo da função callback Uninstall da página Configuração
         public function seq_uninstall_callback()
         { ?>
-<input type="checkbox" name="seq_options[seq_uninstall]" id="seq_uninstall" value="1" <?php if (isset(self::$options['seq_uninstall'])) {
-    checked("1", self::$options['seq_uninstall'], true);
-} ?> /> Limpar dados do
-plugin do banco de dados ao desinstalar?
-<p class="manage-menus" style="margin-top:15px;">Para excluir todos os dados do plugin salvos no banco de dados, basta
-	deixar essa opção marcada antes de desinstalar o plugin.
-	<br>Após apagados, a ação não pode ser desfeita e os dados não poderão ser recuperados.
-	<br>Em uma nova instalação do plugin, as configurações terão que ser salvas novamente, a não ser que tenha deixado
-	essa caixa desmarcada ao desinstalar o plugin.
-</p>
+<input size="80" class="regular-text" type="text" name="seq_options[seq_uninstall]" id="seq_uninstall"
+    value="<?php echo isset(self::$options['seq_uninstall']) ? esc_attr(self::$options['seq_uninstall']) : ''; ?>" />
+<br><span>Para excluir os dados do banco de dados ao desinstalar o plugin, escreva e salve nessa caixa "Sim, desejo
+    excluir os dados ao desinstalar.</span>
 <?php
         }
 
@@ -119,18 +113,18 @@ plugin do banco de dados ao desinstalar?
         public function seq_discount_callback()
         { ?>
 <div style="display:flex;align-items:center;">
-	<input type="range" id="seq_discount" name="seq_options[seq_discount]" min="0" max="100" step="1"
-		value="<?php echo isset(self::$options['seq_discount']) ? esc_attr(self::$options['seq_discount']) : '25'; ?>">
-	<span id="seq_discount_value" style="width:25px;text-align:right;"></span><span style="margin-left:2px;">%</span>
+    <input type="range" id="seq_discount" name="seq_options[seq_discount]" min="0" max="100" step="1"
+        value="<?php echo isset(self::$options['seq_discount']) ? esc_attr(self::$options['seq_discount']) : '25'; ?>">
+    <span id="seq_discount_value" style="width:25px;text-align:right;"></span><span style="margin-left:2px;">%</span>
 </div>
 <script>
-	let seq_discount = document.getElementById("seq_discount");
-	let seq_discount_value = document.getElementById("seq_discount_value");
-	seq_discount_value.innerHTML = seq_discount.value;
+    let seq_discount = document.getElementById("seq_discount");
+    let seq_discount_value = document.getElementById("seq_discount_value");
+    seq_discount_value.innerHTML = seq_discount.value;
 
-	seq_discount.oninput = function() {
-		seq_discount_value.innerHTML = this.value;
-	};
+    seq_discount.oninput = function() {
+        seq_discount_value.innerHTML = this.value;
+    };
 </script>
 <?php
         }
@@ -139,7 +133,7 @@ plugin do banco de dados ao desinstalar?
         public function seq_resposta_positiva_callback()
         { ?>
 <textarea name="seq_options[seq_resposta_positiva]" id="seq_resposta_positiva" cols="80"
-	rows="4"><?php echo isset(self::$options['seq_resposta_positiva']) ? esc_textarea(self::$options['seq_resposta_positiva']) : ''; ?></textarea>
+    rows="4"><?php echo isset(self::$options['seq_resposta_positiva']) ? esc_textarea(self::$options['seq_resposta_positiva']) : ''; ?></textarea>
 <?php
         }
 
@@ -147,7 +141,7 @@ plugin do banco de dados ao desinstalar?
         public function seq_resposta_negativa_callback()
         { ?>
 <textarea name="seq_options[seq_resposta_negativa]" id="seq_resposta_negativa" cols="80"
-	rows="4"><?php echo isset(self::$options['seq_resposta_negativa']) ? esc_textarea(self::$options['seq_resposta_negativa']) : ''; ?></textarea>
+    rows="4"><?php echo isset(self::$options['seq_resposta_negativa']) ? esc_textarea(self::$options['seq_resposta_negativa']) : ''; ?></textarea>
 
 <?php
         }
