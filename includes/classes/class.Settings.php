@@ -125,7 +125,7 @@ if (!class_exists('SEQ_Settings')) {
         { ?>
 <div style="display:flex;align-items:center;">
   <input type="range" id="seq_discount_gd" name="seq_options[seq_discount_gd]" min="0" max="100" step="1"
-    value="<?php echo isset(self::$options['seq_discount_gd']) ? esc_attr(self::$options['seq_discount_gd']) : '25'; ?>">
+    value="<?php echo isset(self::$options['seq_discount_gd']) ? esc_attr(self::$options['seq_discount_gd']) : '15'; ?>">
   <span id="seq_discount_gd_value" style="width:25px;text-align:right;"></span><span style="margin-left:2px;">%</span>
 </div>
 <script>
@@ -145,7 +145,7 @@ if (!class_exists('SEQ_Settings')) {
         { ?>
 <div style="display:flex;align-items:center;">
   <input type="range" id="seq_discount_ml" name="seq_options[seq_discount_ml]" min="0" max="100" step="1"
-    value="<?php echo isset(self::$options['seq_discount_ml']) ? esc_attr(self::$options['seq_discount_ml']) : '25'; ?>">
+    value="<?php echo isset(self::$options['seq_discount_ml']) ? esc_attr(self::$options['seq_discount_ml']) : '20'; ?>">
   <span id="seq_discount_ml_value" style="width:25px;text-align:right;"></span><span style="margin-left:2px;">%</span>
 </div>
 <script>
