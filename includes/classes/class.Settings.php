@@ -116,10 +116,10 @@ if (!class_exists('SEQ_Settings')) {
         { ?>
 <input size="80" class="regular-text" type="text" name="seq_options[seq_uninstall]" id="seq_uninstall"
     value="<?php echo isset(self::$options['seq_uninstall']) ? esc_attr(self::$options['seq_uninstall']) : ''; ?>" />
-<br><span>Para excluir os dados do banco de dados ao desinstalar o plugin, escreva no campo acima EXATAMENTE o texto a seguir (sem as aspas): "Sim, desejo
+<br><span>Para excluir os dados do banco de dados ao desinstalar o plugin, escreva no campo acima EXATAMENTE o texto a
+    seguir (sem as aspas): "Sim, desejo
     excluir os dados ao desinstalar."</span>
-<?php
-        }
+<?php }
 
         //Conteúdo da função callback Desconto Geração Distribuída da página Configuração
         public function seq_discount_gd_callback()

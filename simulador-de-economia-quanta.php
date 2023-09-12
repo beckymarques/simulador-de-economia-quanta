@@ -59,9 +59,11 @@ if (!class_exists('SE_Quanta')) {
         // Função que será executada na desinstalação do plugin
         public static function seq_uninstall()
         {
-            if ( get_option('seq_uninstall') != 'Sim, desejo
-            excluir os dados ao desinstalar' ) exit;
-            delete_option('seq_options');
+            $uninstall = get_option('seq_options')['seq_uninstall'];
+            if ($uninstall == 'Sim, desejo
+            excluir os dados ao desinstalar') {
+                delete_option('seq_options');
+            }
         }
 
         //Cria o menu do plugin no painel do WordPress
