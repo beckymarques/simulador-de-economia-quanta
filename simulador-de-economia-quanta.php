@@ -59,7 +59,8 @@ if (!class_exists('SE_Quanta')) {
         // Função que será executada na desinstalação do plugin
         public static function seq_uninstall()
         {
-            if (!get_option('seq_uninstall', false)) exit;
+            if ( get_option('seq_uninstall') != 'Sim, desejo
+            excluir os dados ao desinstalar' ) exit;
             delete_option('seq_options');
         }
 

@@ -42,15 +42,27 @@ if (!class_exists('SEQ_Settings')) {
                 'seq_config_section'
             );
 
-            //Campo Desconto (Configuração)
+            //Campo Desconto Geração Distribuída (Configuração)
             add_settings_field(
-                'seq_discount',
-                'Porcentagem de desconto',
-                array($this, 'seq_discount_callback'),
+                'seq_discount_gd',
+                'Desconto Geração Distribuída',
+                array($this, 'seq_discount_gd_callback'),
                 'seq_page1',
                 'seq_config_section',
                 array(
-                'label_for' => 'seq_discount'
+                'label_for' => 'seq_discount_gd'
+        )
+            );
+
+            //Campo Desconto Mercado Livre (Configuração)
+            add_settings_field(
+                'seq_discount_ml',
+                'Desconto Mercado Livre',
+                array($this, 'seq_discount_ml_callback'),
+                'seq_page1',
+                'seq_config_section',
+                array(
+                'label_for' => 'seq_discount_ml'
         )
             );
 
@@ -104,26 +116,46 @@ if (!class_exists('SEQ_Settings')) {
         { ?>
 <input size="80" class="regular-text" type="text" name="seq_options[seq_uninstall]" id="seq_uninstall"
     value="<?php echo isset(self::$options['seq_uninstall']) ? esc_attr(self::$options['seq_uninstall']) : ''; ?>" />
-<br><span>Para excluir os dados do banco de dados ao desinstalar o plugin, escreva e salve nessa caixa "Sim, desejo
-    excluir os dados ao desinstalar.</span>
+<br><span>Para excluir os dados do banco de dados ao desinstalar o plugin, escreva no campo acima EXATAMENTE o texto a seguir (sem as aspas): "Sim, desejo
+    excluir os dados ao desinstalar."</span>
 <?php
         }
 
-        //Conteúdo da função callback Desconto da página Configuração
-        public function seq_discount_callback()
+        //Conteúdo da função callback Desconto Geração Distribuída da página Configuração
+        public function seq_discount_gd_callback()
         { ?>
 <div style="display:flex;align-items:center;">
-    <input type="range" id="seq_discount" name="seq_options[seq_discount]" min="0" max="100" step="1"
-        value="<?php echo isset(self::$options['seq_discount']) ? esc_attr(self::$options['seq_discount']) : '25'; ?>">
-    <span id="seq_discount_value" style="width:25px;text-align:right;"></span><span style="margin-left:2px;">%</span>
+    <input type="range" id="seq_discount_gd" name="seq_options[seq_discount_gd]" min="0" max="100" step="1"
+        value="<?php echo isset(self::$options['seq_discount_gd']) ? esc_attr(self::$options['seq_discount_gd']) : '25'; ?>">
+    <span id="seq_discount_gd_value" style="width:25px;text-align:right;"></span><span style="margin-left:2px;">%</span>
 </div>
 <script>
-    let seq_discount = document.getElementById("seq_discount");
-    let seq_discount_value = document.getElementById("seq_discount_value");
-    seq_discount_value.innerHTML = seq_discount.value;
+    let seq_discount_gd = document.getElementById("seq_discount_gd");
+    let seq_discount_gd_value = document.getElementById("seq_discount_gd_value");
+    seq_discount_gd_value.innerHTML = seq_discount_gd.value;
 
-    seq_discount.oninput = function() {
-        seq_discount_value.innerHTML = this.value;
+    seq_discount_gd.oninput = function() {
+        seq_discount_gd_value.innerHTML = this.value;
+    };
+</script>
+<?php
+        }
+
+        //Conteúdo da função callback Desconto Mercado Livre da página Configuração
+        public function seq_discount_ml_callback()
+        { ?>
+<div style="display:flex;align-items:center;">
+    <input type="range" id="seq_discount_ml" name="seq_options[seq_discount_ml]" min="0" max="100" step="1"
+        value="<?php echo isset(self::$options['seq_discount_ml']) ? esc_attr(self::$options['seq_discount_ml']) : '25'; ?>">
+    <span id="seq_discount_ml_value" style="width:25px;text-align:right;"></span><span style="margin-left:2px;">%</span>
+</div>
+<script>
+    let seq_discount_ml = document.getElementById("seq_discount_ml");
+    let seq_discount_ml_value = document.getElementById("seq_discount_ml_value");
+    seq_discount_ml_value.innerHTML = seq_discount_ml.value;
+
+    seq_discount_ml.oninput = function() {
+        seq_discount_ml_value.innerHTML = this.value;
     };
 </script>
 <?php
