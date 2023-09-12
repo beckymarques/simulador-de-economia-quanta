@@ -61,7 +61,7 @@ if (!class_exists('SE_Quanta')) {
         {
             $uninstall = get_option('seq_options')['seq_uninstall'];
             if ($uninstall == 'Sim, desejo
-            excluir os dados ao desinstalar') {
+            excluir os dados ao desinstalar.') {
                 delete_option('seq_options');
             }
         }
