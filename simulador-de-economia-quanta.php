@@ -17,7 +17,7 @@ if (!defined('ABSPATH')) {
 if (!class_exists('SE_Quanta')) {
     class SE_Quanta
     {
-        function __construct()
+        public function __construct()
         {
             $this->define_constants();
 
@@ -60,8 +60,7 @@ if (!class_exists('SE_Quanta')) {
         public static function seq_uninstall()
         {
             $uninstall = get_option('seq_options')['seq_uninstall'];
-            if ($uninstall == 'Sim, desejo
-            excluir os dados ao desinstalar.') {
+            if ($uninstall === 'Sim, desejo excluir os dados ao desinstalar.') {
                 delete_option('seq_options');
             }
         }

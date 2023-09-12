@@ -107,7 +107,7 @@ if (!class_exists('SEQ_Settings')) {
         public function seq_shortcode_callback()
         { ?>
 <span id="seq_shortcode">Use o shortcode [simulador_de_economia] para exibir o Simulador de Economia Quanta em qualquer
-    local.</span>
+  local.</span>
 <?php
         }
 
@@ -115,28 +115,27 @@ if (!class_exists('SEQ_Settings')) {
         public function seq_uninstall_callback()
         { ?>
 <input size="80" class="regular-text" type="text" name="seq_options[seq_uninstall]" id="seq_uninstall"
-    value="<?php echo isset(self::$options['seq_uninstall']) ? esc_attr(self::$options['seq_uninstall']) : ''; ?>" />
+  value="<?php echo isset(self::$options['seq_uninstall']) ? esc_attr(self::$options['seq_uninstall']) : ''; ?>" />
 <br><span>Para excluir os dados do banco de dados ao desinstalar o plugin, escreva no campo acima EXATAMENTE o texto a
-    seguir (sem as aspas): "Sim, desejo
-    excluir os dados ao desinstalar."</span>
+  seguir (sem as aspas): "Sim, desejo excluir os dados ao desinstalar."</span>
 <?php }
 
         //Conteúdo da função callback Desconto Geração Distribuída da página Configuração
         public function seq_discount_gd_callback()
         { ?>
 <div style="display:flex;align-items:center;">
-    <input type="range" id="seq_discount_gd" name="seq_options[seq_discount_gd]" min="0" max="100" step="1"
-        value="<?php echo isset(self::$options['seq_discount_gd']) ? esc_attr(self::$options['seq_discount_gd']) : '25'; ?>">
-    <span id="seq_discount_gd_value" style="width:25px;text-align:right;"></span><span style="margin-left:2px;">%</span>
+  <input type="range" id="seq_discount_gd" name="seq_options[seq_discount_gd]" min="0" max="100" step="1"
+    value="<?php echo isset(self::$options['seq_discount_gd']) ? esc_attr(self::$options['seq_discount_gd']) : '25'; ?>">
+  <span id="seq_discount_gd_value" style="width:25px;text-align:right;"></span><span style="margin-left:2px;">%</span>
 </div>
 <script>
-    let seq_discount_gd = document.getElementById("seq_discount_gd");
-    let seq_discount_gd_value = document.getElementById("seq_discount_gd_value");
-    seq_discount_gd_value.innerHTML = seq_discount_gd.value;
+  let seq_discount_gd = document.getElementById("seq_discount_gd");
+  let seq_discount_gd_value = document.getElementById("seq_discount_gd_value");
+  seq_discount_gd_value.innerHTML = seq_discount_gd.value;
 
-    seq_discount_gd.oninput = function() {
-        seq_discount_gd_value.innerHTML = this.value;
-    };
+  seq_discount_gd.oninput = function() {
+    seq_discount_gd_value.innerHTML = this.value;
+  };
 </script>
 <?php
         }
@@ -145,18 +144,18 @@ if (!class_exists('SEQ_Settings')) {
         public function seq_discount_ml_callback()
         { ?>
 <div style="display:flex;align-items:center;">
-    <input type="range" id="seq_discount_ml" name="seq_options[seq_discount_ml]" min="0" max="100" step="1"
-        value="<?php echo isset(self::$options['seq_discount_ml']) ? esc_attr(self::$options['seq_discount_ml']) : '25'; ?>">
-    <span id="seq_discount_ml_value" style="width:25px;text-align:right;"></span><span style="margin-left:2px;">%</span>
+  <input type="range" id="seq_discount_ml" name="seq_options[seq_discount_ml]" min="0" max="100" step="1"
+    value="<?php echo isset(self::$options['seq_discount_ml']) ? esc_attr(self::$options['seq_discount_ml']) : '25'; ?>">
+  <span id="seq_discount_ml_value" style="width:25px;text-align:right;"></span><span style="margin-left:2px;">%</span>
 </div>
 <script>
-    let seq_discount_ml = document.getElementById("seq_discount_ml");
-    let seq_discount_ml_value = document.getElementById("seq_discount_ml_value");
-    seq_discount_ml_value.innerHTML = seq_discount_ml.value;
+  let seq_discount_ml = document.getElementById("seq_discount_ml");
+  let seq_discount_ml_value = document.getElementById("seq_discount_ml_value");
+  seq_discount_ml_value.innerHTML = seq_discount_ml.value;
 
-    seq_discount_ml.oninput = function() {
-        seq_discount_ml_value.innerHTML = this.value;
-    };
+  seq_discount_ml.oninput = function() {
+    seq_discount_ml_value.innerHTML = this.value;
+  };
 </script>
 <?php
         }
@@ -165,7 +164,7 @@ if (!class_exists('SEQ_Settings')) {
         public function seq_resposta_positiva_callback()
         { ?>
 <textarea name="seq_options[seq_resposta_positiva]" id="seq_resposta_positiva" cols="80"
-    rows="4"><?php echo isset(self::$options['seq_resposta_positiva']) ? esc_textarea(self::$options['seq_resposta_positiva']) : ''; ?></textarea>
+  rows="4"><?php echo isset(self::$options['seq_resposta_positiva']) ? esc_textarea(self::$options['seq_resposta_positiva']) : ''; ?></textarea>
 <?php
         }
 
@@ -173,7 +172,7 @@ if (!class_exists('SEQ_Settings')) {
         public function seq_resposta_negativa_callback()
         { ?>
 <textarea name="seq_options[seq_resposta_negativa]" id="seq_resposta_negativa" cols="80"
-    rows="4"><?php echo isset(self::$options['seq_resposta_negativa']) ? esc_textarea(self::$options['seq_resposta_negativa']) : ''; ?></textarea>
+  rows="4"><?php echo isset(self::$options['seq_resposta_negativa']) ? esc_textarea(self::$options['seq_resposta_negativa']) : ''; ?></textarea>
 
 <?php
         }
