@@ -25,11 +25,17 @@ if (!class_exists('SE_Quanta')) {
 
             // Inclua os arquivos necessários
             require_once(SEQ_PLUGIN_PATH . 'includes/functions/functions.php');
-            require_once(SEQ_PLUGIN_PATH . 'includes/classes/class.Settings.php');
+            if (!class_exists('SEQ_Settings')) {
+                require_once(SEQ_PLUGIN_PATH . 'includes/classes/class.Settings.php');
+            }
             $SEQ_Settings = new SEQ_Settings();
-            require_once(SEQ_PLUGIN_PATH . 'includes/classes/class.Shortcode.php');
+            if (!class_exists('SEQ_Shortcode')) {
+                require_once(SEQ_PLUGIN_PATH . 'includes/classes/class.Shortcode.php');
+            }
             $SEQ_Shortcode = new SEQ_Shortcode();
-            require_once(SEQ_PLUGIN_PATH . 'includes/classes/class.Calculation.php');
+            if (!class_exists('SEQ_Calculation')) {
+                require_once(SEQ_PLUGIN_PATH . 'includes/classes/class.Calculation.php');
+            }
             $SEQ_Calculation = new SEQ_Calculation();
 
             //Add os scripts
