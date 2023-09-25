@@ -273,7 +273,7 @@ $distribuidoras = array(
                 <div class="mt-3">
                   <label class="form-label" for="gastos_mensais_unidades">
                     <div class="mb-2">Possui mais unidades?</div>
-                    Qual é a faixa dos seus gastos totais mensais com as contas de luz de todas as unidades (incluindo a sede)?
+                    Qual é a faixa dos seus gastos mensais totais com as contas de luz de todas as unidades (incluindo a sede)?
                   </label>
                   <div class="d-flex align-items-center">
                     <div class="me-5">
