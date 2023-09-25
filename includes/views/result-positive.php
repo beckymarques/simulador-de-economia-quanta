@@ -1,3 +1,18 @@
+<?php
+/***
+ * TODO Condições para resposta positiva: Se houver demanda OU (se a distribuidora for Light/Enel && a conta de luz for maior que 5 mil )
+ *  ? CONDIÇÕES PARA O CÁLCULO, NO CASO DE RESPOSTA POSITIVA:
+ *  * Valor do desconto: SE TIVER DEMANDA, o desconto é de MERCADO LIVRE, SE NÃO TIVER DEMANDA, o desconto é de GERAÇÃO DISTRIBUÍDA - os valores devem ser chamados do formulário do painel: get_option('seq_options')['seq_discount_ml'] e get_option('seq_options')['seq_discount_gd']. Se tiver valor salvo no banco de dados, utilizá-lo, senão, utilizar o valor padrão (20% no ML e 15% no GD). (sobre o "valor do desconto" abaixo)
+ * 
+ *  * Se tiver preenchido 'gastos_mensais_unidades_valor', utilizar esse valor no "valor da conta de luz" abaixo, senão utilizar 'gastos_mensais_valor' - isso significa que se a empresa tiver mais de uma unidade, a gente usa o valor total, senão a gente usa o valor da única unidade que ela possui.
+ * 
+ * * Economia mensal estimada = Valor da conta de luz * valor do desconto
+ * 
+ * * Novo gasto mensal estimado = Valor da conta de luz - economia mensal estimada
+ * 
+ * * Economia anual estimada = economia mensal estimada * 12 (meses)
+ */
+?>
 <div id="success">
   <!-- Resultado -->
   <!-- Positivo -->

@@ -2,10 +2,18 @@
   <!-- Resultado -->
   <!-- Negativo -->
   <div class="mt-5">
-    <p class="result-item text-muted">Infelizmente <span class="result-item highlight">AINDA</span> não atendemos essa
-      modalidade na sua região.</p>
-    <p class="result-item text-muted">Mas fique tranquilo, assim que oferecermos esse serviço <span
-        class="result-item highlight">entraremos em contato com você!</span></p>
+    <p class="result-item text-muted">
+      <?php
+      $resposta_negativa = get_option('seq_options')['seq_resposta_negativa'];
+      if ($resposta_negativa){
+        echo $resposta_negativa;
+      } else {
+        echo 'Infelizmente <strong>AINDA</strong> não atendemos essa
+        modalidade na sua região.<br><br>
+        Mas fique tranquilo, assim que oferecermos esse serviço <strong>entraremos em contato com você!</strong>';
+      }
+      ?>
+    </p>
   </div>
   <!-- END Resultado -->
   <a class="btn btn-outline-primary text-start d-flex mt-4"

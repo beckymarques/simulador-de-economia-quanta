@@ -587,9 +587,13 @@ $background: #f7f9ff;
   .result-item {
     font-size: 2rem;
     color: $highlight;
+    line-height: 1.5;
     &--caption {
       font-size: 0.55em;
       color: $font-text;
+    }
+    strong{
+      color: $highlight;
     }
   }
   .back-link {
