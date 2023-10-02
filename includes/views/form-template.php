@@ -65,7 +65,6 @@ $distribuidoras = array(
   array('nome' => 'Outra'),
 );
 ?>
-
 <div id="form-simulador">
   <!-- CONTAINER -->
   <div class="d-flex align-items-center min-vh-100">
@@ -150,21 +149,17 @@ $distribuidoras = array(
           <div id="success-title">
             <div class="mt-5">
               <h2>Obrigado por escolher a Quanta!</h2>
-              <?php
-              /**
-              * ! SE A RESPOSTA FOR NEGATIVA, A DIV ABAIXO "negative-answer" NÃO DEVE SER EXIBIDA.
-              */
-              ?>
-              <div id="negative-answer">
+              <div id="negative-answer" v-if="result.feedback === 'positive'">
                 <hr>
                 <h2 id="positive-answer" class="mt-3">
                   <?php
-              $resposta_positiva = get_option('seq_options')['seq_resposta_positiva'];
-              if ($resposta_positiva){
-                echo $resposta_positiva;
-              } else { 
-                echo 'Conheça agora o <strong>potencial de economia</strong> da sua empresa.';
-                } ?>
+                    $resposta_positiva = get_option('seq_options')['seq_resposta_positiva'];
+                    if ($resposta_positiva){
+                      echo $resposta_positiva;
+                    } else {
+                      echo 'Conheça agora o <strong>potencial de economia</strong> da sua empresa.';
+                    }
+                  ?>
                 </h2>
               </div>
             </div>
@@ -179,7 +174,7 @@ $distribuidoras = array(
             style="width: 0%"></div>
         </div>
         <div id="qbox-container" class="p-3 p-md-5">
-          <form class="needs-validation" id="form-wrapper" method="post" name="form-wrapper" novalidate="">
+          <form class="needs-validation" id="form-wrapper" method="post" name="form-wrapper" @submit.prevent="submit" novalidate="">
             <div id="steps-container">
               <div class="step">
                 <div class="d-flex align-items-center justify-content-between">
@@ -203,26 +198,28 @@ $distribuidoras = array(
                   </div>
                 </div>
                 <hr>
-
                 <div class="mt-5">
                   <label class="form-label">Nome e Sobrenome:</label>
-                  <input class="form-control" name="firstname" id="firstname" type="text">
+                  <input v-model="simulatorForm.firstname" class="form-control" name="firstname" id="firstname" type="text">
                 </div>
                 <div class="mt-3">
                   <label class="form-label">Nome da Empresa:</label>
-                  <input class="form-control" name="company" id="company" type="text">
+                  <input v-model="simulatorForm.company" class="form-control" name="company" id="company" type="text">
                 </div>
                 <div class="mt-3">
                   <label class="form-label">Cargo:</label>
-                  <input class="form-control" name="jobtitle" id="jobtitle" type="text">
+                  <input v-model="simulatorForm.jobtitle" class="form-control" name="jobtitle" id="jobtitle" type="text">
                 </div>
                 <div class="mt-3">
-                  <label class="form-label">Melhor e-mail:</label>
-                  <input class="form-control" name="email" id="email" type="email">
+                  <label class="form-label"><span class="text-danger">*</span> Melhor e-mail:</label>
+                  <input v-model="simulatorForm.email" class="form-control" name="email" id="email" type="email" aria-describedby="emailErrorFeedback" required>
+                  <div id="emailErrorFeedback" class="invalid-feedback">
+                    {{ simulatorForm.email.trim() === "" ? "Este campo é obrigatório." : "Este email é inválido."}}
+                  </div>
                 </div>
                 <div class="mt-3">
                   <label class="form-label">Celular com DDD:</label><br>
-                  <input class="form-control w-100" id="phone" name="mobilephone" id="mobilephone" type="text"
+                  <input v-model="simulatorForm.mobilephone" class="form-control w-100" id="phone" name="mobilephone" id="mobilephone" type="text"
                     data-mask="(00) 00000-0000">
                 </div>
                 <div class="utms">
@@ -230,8 +227,6 @@ $distribuidoras = array(
                   <input type="hidden" class="campo-utm" name="utm_medium" id="utm_medium" placeholder="">
                   <input type="hidden" class="campo-utm" name="utm_campaign" id="utm_campaign" placeholder="">
                 </div>
-
-
               </div>
               <div class="step">
                 <div class="d-flex align-items-center justify-content-between">
@@ -264,8 +259,8 @@ $distribuidoras = array(
                         min="0" max="100000" step="100" value="0">
                     </div>
                     <div>
-                      <input type="text" class="form-control" name="gastos_mensais_valor" id="gastos_mensais_valor"
-                        data-affixes-stay="true" data-prefix="R$ " data-thousands="." data-decimal=","
+                      <input ref="gastos_mensais" type="text" class="form-control" name="gastos_mensais_valor" id="gastos_mensais_valor"
+                        data-affixes-stay="false" data-prefix="R$ " data-thousands="." data-decimal=","
                         placeholder="R$ 0,00" required>
                     </div>
                   </div>
@@ -281,8 +276,8 @@ $distribuidoras = array(
                         id="gastos_mensais_unidades" min="0" max="100000" step="100" value="0">
                     </div>
                     <div>
-                      <input type="text" class="form-control" name="gastos_mensais_unidades_valor"
-                        id="gastos_mensais_unidades_valor" data-affixes-stay="true" data-prefix="R$ " data-thousands="."
+                      <input ref="gastos_mensais_unidades" type="text" class="form-control" name="gastos_mensais_unidades_valor"
+                        id="gastos_mensais_unidades_valor" data-affixes-stay="false" data-prefix="R$ " data-thousands="."
                         data-decimal="," placeholder="R$ 0,00">
                     </div>
                   </div>
@@ -292,27 +287,27 @@ $distribuidoras = array(
                     distribuidora?</label>
                   <div class="possui_demanda">
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="possui_demanda" id="possui_demanda_sim"
-                        value="sim">
+                      <input v-model="simulatorForm.empresa_ja_possui_demanda_contratada" class="form-check-input" type="radio" name="possui_demanda" id="possui_demanda_sim"
+                        value="Sim">
                       <label class="form-check-label" for="possui_demanda_sim">Sim</label>
                     </div>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="possui_demanda" id="possui_demanda_nao"
-                        value="nao">
+                      <input v-model="simulatorForm.empresa_ja_possui_demanda_contratada" class="form-check-input" type="radio" name="possui_demanda" id="possui_demanda_nao"
+                        value="Nao">
                       <label class="form-check-label" for="possui_demanda_nao">Não</label>
                     </div>
                   </div>
                 </div>
                 <div class="mt-3 valor_demanda_kwh d-none">
                   <div class="rotulo"><label for="valor_demanda_kwh">Qual é o valor da demanda em kW?</label></div>
-                  <div class="campo"><input type="text" data-mask="# kWh" data-mask-reverse="true" class="form-control"
+                  <div class="campo"><input ref="valor_demanda" type="text" data-mask="# kWh" data-mask-reverse="true" class="form-control"
                       name="valor_demanda_kwh" id="valor_demanda_kwh" placeholder="0 kWh"></div>
                 </div>
                 <div class="mt-3">
                   <div class="distribuidora">
                     <div class="rotulo"><label for="distribuidora">Selecione a distribuidora</label></div>
                     <div class="campo">
-                      <select name="distribuidora" id="distribuidora" class="form-select js-choice" required>
+                      <select ref="distribuidora" name="distribuidora" id="distribuidora" class="form-select js-choice" required>
                         <option class="choices__item--disabled" value="" selected disabled>Selecione uma opção</option>
                         <?php if (!empty($distribuidoras)) : ?>
                         <?php foreach ($distribuidoras as $item) : ?>
@@ -325,7 +320,6 @@ $distribuidoras = array(
                     </div>
                   </div>
                 </div>
-
               </div>
               <div class="step">
                 <div class="d-flex align-items-center justify-content-between">
@@ -356,8 +350,8 @@ $distribuidoras = array(
                         fatura:</label>
                       <div class="anexo_fatura">
                         <div class="campo campos-file">
-                          <input type="file" class="form-control" accept=".doc,.docx,.pdf,.png,.jpeg,.jpg"
-                            name="conta_de_energia" id="conta_de_energia[]" multiple="multiple">
+                          <input @change="uploadImage" type="file" class="form-control" accept=".doc,.docx,.pdf,.png,.jpeg,.jpg"
+                            name="conta_de_energia" id="conta_de_energia" multiple="multiple">
                         </div>
                       </div>
                     </div>
@@ -365,38 +359,38 @@ $distribuidoras = array(
                       <label class="form-label" for="">Por onde nos conheceu?</label>
                       <div class="como_conheceu">
                         <div class="form-check form-check-inline conheceu-radio-group">
-                          <input class="form-check-input conheceu-input" type="radio" name="como_conheceu"
+                          <input v-model="simulatorForm.como_conheceu_a_quanta_geracao" class="form-check-input conheceu-input" type="radio" name="como_conheceu"
                             id="como_conheceu_1" value="Indicação" required> <label
                             class="form-check-label conheceu-label rounded" for="como_conheceu_1">Indicação</label>
                         </div>
                         <div class="form-check form-check-inline conheceu-radio-group">
-                          <input class="form-check-input conheceu-input" type="radio" name="como_conheceu"
+                          <input v-model="simulatorForm.como_conheceu_a_quanta_geracao" class="form-check-input conheceu-input" type="radio" name="como_conheceu"
                             id="como_conheceu_2" value="Redes Sociais"><label
                             class="form-check-label conheceu-label rounded" for="como_conheceu_2">Redes
                             Sociais</label>
                         </div>
                         <div class="form-check form-check-inline conheceu-radio-group">
-                          <input class="form-check-input conheceu-input" type="radio" name="como_conheceu"
+                          <input v-model="simulatorForm.como_conheceu_a_quanta_geracao" class="form-check-input conheceu-input" type="radio" name="como_conheceu"
                             id="como_conheceu_3" value="Site"> <label class="form-check-label conheceu-label rounded"
                             for="como_conheceu_3">Site</label>
                         </div>
                         <div class="form-check form-check-inline conheceu-radio-group">
-                          <input class="form-check-input conheceu-input" type="radio" name="como_conheceu"
+                          <input v-model="simulatorForm.como_conheceu_a_quanta_geracao" class="form-check-input conheceu-input" type="radio" name="como_conheceu"
                             id="como_conheceu_4" value="Google"> <label class="form-check-label conheceu-label rounded"
                             for="como_conheceu_4">Google</label>
                         </div>
                         <div class="form-check form-check-inline conheceu-radio-group">
-                          <input class="form-check-input conheceu-input" type="radio" name="como_conheceu"
+                          <input v-model="simulatorForm.como_conheceu_a_quanta_geracao" class="form-check-input conheceu-input" type="radio" name="como_conheceu"
                             id="como_conheceu_5" value="Lives/Eventos"><label
                             class="form-check-label conheceu-label rounded" for="como_conheceu_5">Lives/Eventos</label>
                         </div>
                         <div class="form-check form-check-inline conheceu-radio-group">
-                          <input class="form-check-input conheceu-input" type="radio" name="como_conheceu"
+                          <input v-model="simulatorForm.como_conheceu_a_quanta_geracao" class="form-check-input conheceu-input" type="radio" name="como_conheceu"
                             id="como_conheceu_6" value="WhatsApp"> <label
                             class="form-check-label conheceu-label rounded" for="como_conheceu_6">WhatsApp</label>
                         </div>
                         <div class="form-check form-check-inline conheceu-radio-group">
-                          <input class="form-check-input conheceu-input" type="radio" name="como_conheceu"
+                          <input v-model="simulatorForm.como_conheceu_a_quanta_geracao" class="form-check-input conheceu-input" type="radio" name="como_conheceu"
                             id="como_conheceu_7" value="Outros"> <label class="form-check-label conheceu-label rounded"
                             for="como_conheceu_7">Outros</label>
                         </div>
@@ -406,7 +400,7 @@ $distribuidoras = array(
                   <div class="mt-5">
                     <div class="politca_privacidade">
                       <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="politca_privacidade"
+                        <input v-model="simulatorForm.politca_privacidade" class="form-check-input" type="checkbox" name="politca_privacidade"
                           id="politca_privacidade" value="1" required>
                         <label class="form-check-label" for="politca_privacidade">Li e estou de acordo com a política de
                           privacidade da Quanta.</label>
@@ -415,33 +409,14 @@ $distribuidoras = array(
                   </div> <!-- Pol privacidade -->
                 </div>
               </div> <!-- step -->
-
-              <?php include_once(SEQ_PLUGIN_PATH . 'includes/views/result-positive.php')?>
-              <?php //include_once( SEQ_PLUGIN_PATH . 'includes/views/result-negative.php' )?>
-              <?php
-              if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit-btn'])) {
-
-                  // Obter os valores do formulário e atribui-los às variáveis apropriadas
-                  $gastosMensaisValor = $_POST['gastos_mensais_valor'];
-                  $possuiDemanda = $_POST['possui_demanda'];
-                  $distribuidora = $_POST['distribuidora'];
-
-                  // Chamar a função calcularSimulacao da classe SEQ_Calculation
-                  $resultadoSimulacao = SEQ_Calculation::calcularSimulacao($gastosMensaisValor, $possuiDemanda, $distribuidora);
-
-                  // Acessar os resultados da Simulação
-                  $resposta = $resultadoSimulacao['resposta'];
-                  $economiaMensalEstimada = $resultadoSimulacao['economiaMensalEstimada'];
-                  $novoGastoMensalEstimado = $resultadoSimulacao['novoGastoMensalEstimado'];
-                  $economiaAnualEstimada = $resultadoSimulacao['economiaAnualEstimada'];
-
-                  var_dump($resposta);
-                  var_dump($economiaMensalEstimada);
-                  var_dump($novoGastoMensalEstimado);
-                  var_dump($economiaAnualEstimada);
-              }
-?>
-
+              <div id="success">
+                <div id="positive" v-if="result.feedback === 'positive'">
+                    <?php include (SEQ_PLUGIN_VIEWS . 'result-positive.php'); ?>
+                </div>
+                <div id="negative" v-else>
+                    <?php include (SEQ_PLUGIN_VIEWS . 'result-negative.php'); ?>
+                </div>
+              </div>
             </div>
             <div id="q-box__buttons">
               <button id="prev-btn" type="button"><span class="badge rounded-pill"><svg width="33" height="33"
@@ -452,7 +427,7 @@ $distribuidoras = array(
                       stroke-linecap="round" stroke-linejoin="round" />
                   </svg>
                 </span></button>
-              <button id="next-btn" type="button"><span class="badge rounded-pill"><svg width="33" height="33"
+              <button id="next-btn" @click="submitForm" type="button"><span class="badge rounded-pill"><svg width="33" height="33"
                     viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M7.06934 16.5001H25.9304" stroke="white" stroke-width="2.69444" stroke-linecap="round"
                       stroke-linejoin="round" />
@@ -465,7 +440,6 @@ $distribuidoras = array(
             </div>
           </form>
         </div>
-
       </div> <!-- Col -->
     </div> <!-- Row -->
   </div><!-- Container -->
@@ -475,3 +449,116 @@ $distribuidoras = array(
     <div class="preloader-section section-right"></div>
   </div>
 </div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+<script>
+    const baseUrl = "<?= home_url() ?>";
+    const { createApp } = Vue
+    createApp({
+        data() {
+            return {
+                emailIsInvalid: false,
+                // Campos do formulário
+                simulatorForm: {
+                    firstname: "",
+                    company: "",
+                    jobtitle: "",
+                    email: "",
+                    mobilephone: "",
+                    valor_aproximado_dos_gastos_mensais_com_energia__r__: "",
+                    faixa_gastos_mais_unidades: "",
+                    empresa_ja_possui_demanda_contratada: "",
+                    valor_da_demanda_em_kw: "",
+                    distribuidora: "",
+                    conta_de_energia: "",
+                    como_conheceu_a_quanta_geracao: "",
+                    politca_privacidade: false
+                },
+                // Resposta do cálculo
+                result: {
+                    feedback: "negative",
+                    valorDesconto: 0,
+                    totalMesComDesconto: 0,
+                    economiaAnual: 0
+                }
+            }
+        },
+        methods: {
+            // Calcula e envia o formulário
+            submit() {
+                this.calculation();
+                this.submitForm();
+            },
+            // Requisição de cálculo para a API
+            calculation() {
+                this.getOtherFelds(); // Busca campos que não foram buscados com v-model
+                fetch(`${baseUrl}/wp-json/simulador_quanta/v1/calculation`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(this.simulatorForm),
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Erro na requisição');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.success)
+                            this.result = data.data;
+                    });
+            },
+            // Busca campos que não foram buscados com v-model
+            getOtherFelds() {
+                this.simulatorForm.valor_aproximado_dos_gastos_mensais_com_energia__r__ = this.$refs.gastos_mensais.value;
+                this.simulatorForm.faixa_gastos_mais_unidades = this.$refs.gastos_mensais_unidades.value;
+                this.simulatorForm.distribuidora = this.$refs.distribuidora.value;
+                this.simulatorForm.valor_da_demanda_em_kw = this.$refs.valor_demanda.value;
+            },
+            // Requisição de envio de formulário para a API
+            submitForm() {
+                this.getOtherFelds(); // Busca campos que não foram buscados com v-model
+                
+                if (validateEmail()) {
+                    fetch(`${baseUrl}/wp-json/simulador_quanta/v1/submit_form`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(this.simulatorForm),
+                    });
+                }
+            },
+            // Busca a imagem e transforma em base64
+            uploadImage(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = () => {
+                        this.simulatorForm.conta_de_energia = reader.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            },
+            // Formata o float em valor monetário brasileiro com duas casas decimais
+            numberFormat(number) {
+                number = number.toFixed(2);
+        
+                var nstr = number.toString();
+                nstr += '';
+                x = nstr.split('.');
+                x1 = x[0];
+                x2 = x.length > 1 ? ',' + x[1] : '';
+                var rgx = /(\d+)(\d{3})/;
+        
+                while (rgx.test(x1))
+                    x1 = x1.replace(rgx, '$1' + '.' + '$2');
+                
+                return x1 + x2;
+            }
+        }
+    })
+    .mount('#form-simulador')
+</script>
