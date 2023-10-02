@@ -1,4 +1,5 @@
 //Form Steps
+var $ = jQuery.noConflict()
 let step = document.getElementsByClassName("step");
 let stepTitle = document.getElementsByClassName("step-title");
 let prevBtn = document.getElementById("prev-btn");
@@ -10,6 +11,7 @@ let bodyElement = document.querySelector("body");
 let succcessDiv = document.getElementById("success");
 let succcessTitleDiv = document.getElementById("success-title");
 let boxButtons = document.getElementById("q-box__buttons");
+let email = $('#email');
 
 form.onsubmit = () => {
   return false;
@@ -31,35 +33,38 @@ const progress = (value) => {
 };
 
 nextBtn.addEventListener("click", () => {
-  current_step++;
-  let previous_step = current_step - 1;
-  if (current_step > 0 && current_step <= stepCount) {
-    prevBtn.classList.remove("d-none");
-    prevBtn.classList.add("d-inline-block");
-    step[current_step].classList.remove("d-none");
-    stepTitle[current_step].classList.remove("d-none");
-    step[current_step].classList.add("d-block");
-    stepTitle[current_step].classList.add("d-block");
-    step[previous_step].classList.remove("d-block");
-    stepTitle[previous_step].classList.remove("d-block");
-    step[previous_step].classList.add("d-none");
-    stepTitle[previous_step].classList.add("d-none");
-    boxButtons.classList.remove("justify-content-end");
-    boxButtons.classList.add("justify-content-between");
-    if (current_step == stepCount) {
-      submitBtn.classList.remove("d-none");
-      submitBtn.classList.add("d-inline-block");
-      nextBtn.classList.remove("d-inline-block");
-      nextBtn.classList.add("d-none");
+  email.on('input', validateEmail);
+  if (validateEmail()) {
+    current_step++;
+    let previous_step = current_step - 1;
+    if (current_step > 0 && current_step <= stepCount) {
+      prevBtn.classList.remove("d-none");
+      prevBtn.classList.add("d-inline-block");
+      step[current_step].classList.remove("d-none");
+      stepTitle[current_step].classList.remove("d-none");
+      step[current_step].classList.add("d-block");
+      stepTitle[current_step].classList.add("d-block");
+      step[previous_step].classList.remove("d-block");
+      stepTitle[previous_step].classList.remove("d-block");
+      step[previous_step].classList.add("d-none");
+      stepTitle[previous_step].classList.add("d-none");
+      boxButtons.classList.remove("justify-content-end");
+      boxButtons.classList.add("justify-content-between");
+      if (current_step == stepCount) {
+        submitBtn.classList.remove("d-none");
+        submitBtn.classList.add("d-inline-block");
+        nextBtn.classList.remove("d-inline-block");
+        nextBtn.classList.add("d-none");
+      }
+    } else {
+      if (current_step > stepCount) {
+        form.onsubmit = () => {
+          return true;
+        };
+      }
     }
-  } else {
-    if (current_step > stepCount) {
-      form.onsubmit = () => {
-        return true;
-      };
-    }
+    progress((100 / stepCount) * current_step);
   }
-  progress((100 / stepCount) * current_step);
 });
 
 prevBtn.addEventListener("click", () => {
@@ -95,7 +100,7 @@ prevBtn.addEventListener("click", () => {
   progress((100 / stepCount) * current_step);
 });
 
-submitBtn.addEventListener("click", () => {
+submitBtn.addEventListener("click", async () => {
   preloader.classList.add("d-block");
 
   const timer = (ms) => new Promise((res) => setTimeout(res, ms));
@@ -129,12 +134,14 @@ valor_demanda_kwh = jQuery("#valor_demanda_kwh");
 jQuery(function () {
   gastos_mensais_valor.maskMoney({
     prefix: "R$ ",
+    affixesStay: false,
     thousands: ".",
     decimal: ",",
   });
 
   gastos_mensais_unidades_valor.maskMoney({
     prefix: "R$ ",
+    affixesStay: false,
     thousands: ".",
     decimal: ",",
   });
@@ -148,9 +155,10 @@ jQuery(function () {
 
   let possui_demanda = jQuery('input[name="possui_demanda"]');
   valor_demanda_kwh = jQuery("#valor_demanda_kwh");
+  distribuidora = jQuery("#distribuidora");
   possui_demanda.change(function (e) {
     let valor = jQuery(this).val();
-    if (valor === "sim") {
+    if (valor === "Sim") {
       jQuery(".valor_demanda_kwh").removeClass("d-none").fadeIn();
       jQuery("#valor_demanda_kwh").attr("required", true);
       distribuidora.attr("required", true);
@@ -195,6 +203,28 @@ gastos_mensais_unidades.oninput = function () {
   valor_range_2.value = this.value;
   jQuery("#gastos_mensais_unidades_valor").maskMoney("mask");
 };
+
+// Validar email
+function updateFeedback(isValid= true) {
+  email.removeClass('is-valid is-invalid');
+  if (isValid)
+    email.addClass('is-valid');
+  else
+    email.addClass('is-invalid');
+}
+
+function validateEmail() {
+  if (email.val().trim() === '') {
+    updateFeedback(false);
+    return false;
+  }
+
+  let regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+  let isValid = regex.test(email.val());
+  updateFeedback(isValid);
+  return isValid;
+}
+// END Validar email
 
 //END Range
 
@@ -246,4 +276,3 @@ jQuery(document).keypress(function (event) {
     event.preventDefault();
   }
 });
-

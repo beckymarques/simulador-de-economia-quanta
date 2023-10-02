@@ -46,6 +46,8 @@ if (!class_exists('SE_Quanta')) {
         {
             define('SEQ_PLUGIN_PATH', plugin_dir_path(__FILE__));
             define('SEQ_PLUGIN_URL', plugin_dir_url(__FILE__));
+            define('SEQ_PLUGIN_ASSETS', plugin_dir_path(__FILE__) . '/assets/');
+            define('SEQ_PLUGIN_VIEWS', plugin_dir_path(__FILE__) . '/includes/views/');
             define('SEQ_PLUGIN_VERSION', '1.0.0');
         }
 
