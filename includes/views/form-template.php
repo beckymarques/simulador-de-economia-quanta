@@ -400,8 +400,8 @@ $distribuidoras = array(
                   <div class="mt-5">
                     <div class="politca_privacidade">
                       <div class="form-check">
-                        <input v-model="simulatorForm.politca_privacidade" class="form-check-input" type="checkbox" name="politca_privacidade"
-                          id="politca_privacidade" value="1" required>
+                        <input v-model="simulatorForm.politica_privacidade" class="form-check-input" type="checkbox" name="politca_privacidade"
+                          id="politca_privacidade" required>
                         <label class="form-check-label" for="politca_privacidade">Li e estou de acordo com a política de
                           privacidade da Quanta.</label>
                       </div>
@@ -472,7 +472,7 @@ $distribuidoras = array(
                     distribuidora: "",
                     conta_de_energia: "",
                     como_conheceu_a_quanta_geracao: "",
-                    politca_privacidade: false
+                    politica_privacidade: false
                 },
                 // Resposta do cálculo
                 result: {
