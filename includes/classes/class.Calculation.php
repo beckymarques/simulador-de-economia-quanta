@@ -85,7 +85,7 @@ if (! class_exists('SEQ_Calculation')) {
           'distribuidora',
           'conta_de_energia',
           'como_conheceu_a_quanta_geracao',
-          'politca_privacidade'
+          'politica_privacidade'
         );
         
         foreach ($requireds as $required) {
