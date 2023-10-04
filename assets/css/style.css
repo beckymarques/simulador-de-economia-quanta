@@ -19,6 +19,11 @@
   }
 }
 #form-simulador {
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #828282;
   /* GENERAL */
   /* TITLE */
   /* FORMS */
@@ -30,45 +35,45 @@
 #form-simulador .text-bg-primary {
   background-color: #1f8ece !important;
 }
-#form-simulador body {
-  background: #f7f9ff;
-  font-family: "Raleway", sans-serif;
-  font-size: 16px;
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 1.3;
-  color: #828282;
-}
 #form-simulador h1 {
   color: #828282;
+  font-family: "Raleway", sans-serif;
 }
 #form-simulador h2 {
   color: #828282;
+  font-family: "Raleway", sans-serif;
 }
 #form-simulador h3 {
   color: #828282;
+  font-family: "Raleway", sans-serif;
 }
 #form-simulador h4 {
   color: #828282;
+  font-family: "Raleway", sans-serif;
 }
 #form-simulador h5 {
   color: #828282;
+  font-family: "Raleway", sans-serif;
 }
 #form-simulador h6 {
   color: #828282;
+  font-family: "Raleway", sans-serif;
 }
 #form-simulador .text-highlight {
+  font-family: "Raleway", sans-serif;
   color: #ffc149;
 }
 #form-simulador a {
+  font-family: "Raleway", sans-serif;
   text-decoration: none !important;
 }
 #form-simulador p {
+  font-family: "Raleway", sans-serif;
   margin-bottom: 24px;
   line-height: 1.9;
 }
 #form-simulador label {
-  font-size: 16px;
+  font-family: "Raleway", sans-serif;
   font-size: 1rem;
   font-weight: 600;
   margin-bottom: 5px;
@@ -735,4 +740,4 @@
   opacity: 0;
   -webkit-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
-}
+}/*# sourceMappingURL=style.css.map */
