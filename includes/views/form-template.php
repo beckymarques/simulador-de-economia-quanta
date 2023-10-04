@@ -81,7 +81,7 @@ $distribuidoras = array(
             </div>
             <h2>Receba <strong>gratuitamente</strong> uma avaliação da conta de energia da sua empresa agora!</h2>
             <h3 class="mt-5 mb-5">Para iniciar, <strong>preencha os dados ao lado</strong>.</h3>
-            <a class="btn btn-white text-start d-flex mt-4" href="<?= $linkWhats; ?>" target="_blank"
+            <a class="btn btn-white text-start d-flex mt-4 btn-duvidas" href="<?= $linkWhats; ?>" target="_blank"
               rel="noopener noreferrer">
               <div class="d-flex align-items-center">
                 <svg class="btn-img" viewBox="0 0 63 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -106,7 +106,7 @@ $distribuidoras = array(
             <h2>Agora, informe o <strong>perfil de consumo</strong> energético da sua empresa e avance para a última
               etapa.</h2>
             <h3 class="mt-5 mb-5">Em breve, você saberá o quanto pode economizar com nossas soluções!</h3>
-            <a class="btn btn-white text-start d-flex mt-4" href="<?= $linkWhats; ?>" target="_blank"
+            <a class="btn btn-white text-start d-flex mt-4 btn-duvidas" href="<?= $linkWhats; ?>" target="_blank"
               rel="noopener noreferrer">
               <div class="d-flex align-items-center">
                 <svg class="btn-img" viewBox="0 0 63 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -131,7 +131,7 @@ $distribuidoras = array(
             <h2><strong>Falta pouco!</strong></h2>
             <h2 class="mt-4 mb-5">A seguir, você receberá sua simulação gratuita e saberá qual é o <strong>potencial de
                 redução de custos</strong> que você pode gerar para sua empresa.</h2>
-            <a class="btn btn-white text-start d-flex mt-4" href="<?= $linkWhats; ?>" target="_blank"
+            <a class="btn btn-white text-start d-flex mt-4 btn-duvidas" href="<?= $linkWhats; ?>" target="_blank"
               rel="noopener noreferrer">
               <div class="d-flex align-items-center">
                 <svg class="btn-img" viewBox="0 0 63 64" fill="none" xmlns="http://www.w3.org/2000/svg">

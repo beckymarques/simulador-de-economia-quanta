@@ -130,6 +130,9 @@
   height: auto;
   margin-left: 1em;
 }
+#form-simulador .btn-duvidas {
+  font-size: 1em;
+}
 #form-simulador .btn-white {
   background-color: #fff;
   color: #1f8ece;
