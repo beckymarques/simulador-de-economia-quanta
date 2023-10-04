@@ -74,7 +74,7 @@
 }
 #form-simulador label {
   font-family: "Raleway", sans-serif;
-  font-size: 1rem;
+  font-size: 1em;
   font-weight: 600;
   margin-bottom: 5px;
   color: #828282;
@@ -95,7 +95,7 @@
   background: linear-gradient(180deg, rgb(31, 142, 206) 0%, rgb(56, 176, 216) 50%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1f8ece",endColorstr="#38b0d8",GradientType=1);
   font-weight: 400;
-  padding: 3rem;
+  padding: 3em;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   position: relative;
@@ -104,14 +104,14 @@
   -moz-box-shadow: 10px 8px 21px 0px rgba(204, 204, 204, 0.75);
 }
 #form-simulador #title-container h2 {
-  font-size: 2rem;
+  font-size: 2em;
   font-weight: 300;
   color: #fff;
   padding: 0;
   margin-bottom: 0px;
 }
 #form-simulador #title-container h3 {
-  font-size: 1.3rem;
+  font-size: 1.3em;
   font-weight: 300;
   color: #fff;
   padding: 0;
@@ -128,14 +128,14 @@
 #form-simulador .btn-img {
   width: 45px;
   height: auto;
-  margin-left: 1rem;
+  margin-left: 1em;
 }
 #form-simulador .btn-white {
   background-color: #fff;
   color: #1f8ece;
   border-radius: 100px;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
 }
 #form-simulador .btn-white:hover {
   background-color: #ffc149;
@@ -191,7 +191,7 @@
   position: relative;
   font-weight: 500;
   font-size: 23px;
-  font-size: 1.4375rem;
+  font-size: 1.4375em;
   line-height: 1.6;
 }
 #form-simulador button#prev-btn {
@@ -471,7 +471,7 @@
   transition: all 0.15s ease-in-out;
 }
 #form-simulador input[type=file] {
-  padding: 0.375rem 0.75rem;
+  padding: 0.375em 0.75em;
 }
 #form-simulador input[type=file]::-webkit-file-upload-button {
   background-color: #1f8ece;
@@ -529,7 +529,7 @@
   color: #fff;
 }
 #form-simulador .conheceu-radio-group .conheceu-label {
-  padding: 0.5rem;
+  padding: 0.5em;
   border: 1px solid #1f8ece;
 }
 #form-simulador .conheceu-radio-group .conheceu-label:hover {
@@ -609,7 +609,7 @@
   width: 15px;
 }
 #form-simulador .result-item {
-  font-size: 2rem;
+  font-size: 2em;
   color: #ffc149;
   line-height: 1.5;
 }
@@ -660,7 +660,7 @@
   #form-simulador .breadcrumb-item {
     font-size: 0.9em;
     padding-left: 0 !important;
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.5em;
   }
   #form-simulador .breadcrumb-item::before {
     display: none;
