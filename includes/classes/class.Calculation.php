@@ -39,10 +39,10 @@ if (! class_exists('SEQ_Calculation')) {
 	    ]);
 			
 	    // Porcentagem de juros ML
-	    define("DESCONTO_ML", 20);
+	    define("DESCONTO_ML", get_option('seq_options')['seq_discount_ml']);
 			
 			// Porcentagem de juros GD
-	    define("DESCONTO_GD", 15);
+	    define("DESCONTO_GD", get_option('seq_options')['seq_discount_gd']);
 			
 	    // Valor gasto mensal para ser resposta positiva
 	    define("GASTO_MENSAL_RESPOSTA_POSITIVA", 5000);
@@ -98,18 +98,42 @@ if (! class_exists('SEQ_Calculation')) {
         foreach ($request->get_json_params() as $key => $value) {
           $this->$key = $value;
           
-					// Padrão de envio de campos aceito pelo HubSpot
-          $fields[] = array(
-            "objectTypeId" => "0-1",
-            "name" => $key,
-            "value" => $value
-          );
+					if ($key != "politica_privacidade") {
+						// Padrão de envio de campos aceito pelo HubSpot
+						$fields[] = array(
+							"objectTypeId" => "0-1",
+							"name" => $key,
+							"value" => $value
+						);
+					}
         }
         
 				// Criando data JSON
         $data = array(
           "fields" => $fields
         );
+				
+				// Preenche o campo política de privacidade
+				if ($this->politica_privacidade) {
+					$data["legalConsentOptions"] = array(
+						"consent" => array(
+							"consentToProcess" => true,
+							"text" => "",
+							"communications" => array(
+								array(
+									"value" => true,
+									"subscriptionTypeId" => 999,
+									"text" => "Consentimento para comunicação de texto para tipo de assinatura ID 999"
+								),
+								array(
+									"value" => true,
+									"subscriptionTypeId" => 777,
+									"text" => "Consentimento para comunicar texto para {$this->firstname}"
+								)
+							)
+						)
+					);
+				}
 				
 				// Forma Endpoint
 				$url = "{$this->formSubmissionResource}/{$this->portalId}/{$this->formGuid}";
@@ -135,7 +159,7 @@ if (! class_exists('SEQ_Calculation')) {
         curl_close($ch);
 				// END Requisição
         
-        if (!json_decode($response)->errors){
+        if (json_decode($response)->status != "error"){
           return $this->response(200, json_decode($response)->inlineMessage, $data);
         }
         
@@ -178,11 +202,11 @@ if (! class_exists('SEQ_Calculation')) {
         }
 
         if ($this->empresa_ja_possui_demanda_contratada === 'Sim') {
-            $this->desconto = DESCONTO_ML; // Adição do desconto para ML
+            $this->desconto = (float) DESCONTO_ML; // Adição do desconto para ML
             return $this->positiveResponse(); // Resposta positiva
         } else {
-            $this->desconto = DESCONTO_GD;  // Adição do desconto para GD
-            if ($this->isExceptedDistributor() && $this->getTotalMes() > GASTO_MENSAL_RESPOSTA_POSITIVA) {
+            $this->desconto = (float) DESCONTO_GD;  // Adição do desconto para GD
+            if ($this->isExceptedDistributor() && $this->getTotalMes() >= GASTO_MENSAL_RESPOSTA_POSITIVA) {
                 return $this->positiveResponse(); // Resposta positiva
             }
         }
