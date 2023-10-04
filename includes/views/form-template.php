@@ -219,7 +219,7 @@ $distribuidoras = array(
                 </div>
                 <div class="mt-3">
                   <label class="form-label">Celular com DDD:</label><br>
-                  <input v-model="simulatorForm.mobilephone" class="form-control w-100" id="phone" name="mobilephone" id="mobilephone" type="text"
+                  <input v-model="simulatorForm.mobilephone" class="form-control w-100" name="mobilephone" id="mobilephone" type="text"
                     data-mask="(00) 00000-0000">
                 </div>
                 <div class="utms">

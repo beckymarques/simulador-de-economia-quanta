@@ -268,7 +268,7 @@ var behavior = function (val) {
     },
   };
 
-jQuery("#phone").mask(behavior, options);
+jQuery("#mobilephone").mask(behavior, options);
 
 //Disable enter key
 jQuery(document).keypress(function (event) {
