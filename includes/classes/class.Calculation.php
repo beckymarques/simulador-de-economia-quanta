@@ -39,10 +39,10 @@ if (! class_exists('SEQ_Calculation')) {
 	    ]);
 			
 	    // Porcentagem de juros ML
-	    define("DESCONTO_ML", get_option('seq_options')['seq_discount_ml']);
+	    define("DESCONTO_ML", get_option('seq_options')['seq_discount_ml'] ?? 0);
 			
 			// Porcentagem de juros GD
-	    define("DESCONTO_GD", get_option('seq_options')['seq_discount_gd']);
+	    define("DESCONTO_GD", get_option('seq_options')['seq_discount_gd'] ?? 0);
 			
 	    // Valor gasto mensal para ser resposta positiva
 	    define("GASTO_MENSAL_RESPOSTA_POSITIVA", 5000);
