@@ -261,7 +261,7 @@ $distribuidoras = array(
                     <div>
                       <input ref="gastos_mensais" type="text" class="form-control" name="gastos_mensais_valor" id="gastos_mensais_valor"
                         data-affixes-stay="false" data-prefix="R$ " data-thousands="." data-decimal=","
-                        placeholder="R$ 0,00" required>
+                        placeholder="R$ 0,00" aria-describedby="expensesErrorFeedback" required>
                     </div>
                   </div>
                 </div>
@@ -288,12 +288,12 @@ $distribuidoras = array(
                   <div class="possui_demanda">
                     <div class="form-check form-check-inline">
                       <input v-model="simulatorForm.empresa_ja_possui_demanda_contratada" class="form-check-input" type="radio" name="possui_demanda" id="possui_demanda_sim"
-                        value="Sim">
+                        value="Sim" required>
                       <label class="form-check-label" for="possui_demanda_sim">Sim</label>
                     </div>
                     <div class="form-check form-check-inline">
                       <input v-model="simulatorForm.empresa_ja_possui_demanda_contratada" class="form-check-input" type="radio" name="possui_demanda" id="possui_demanda_nao"
-                        value="Nao">
+                        value="Nao" required>
                       <label class="form-check-label" for="possui_demanda_nao">Não</label>
                     </div>
                   </div>
@@ -467,7 +467,7 @@ $distribuidoras = array(
                     mobilephone: "",
                     valor_aproximado_dos_gastos_mensais_com_energia__r__: "",
                     faixa_gastos_mais_unidades: "",
-                    empresa_ja_possui_demanda_contratada: "",
+                    empresa_ja_possui_demanda_contratada: "Nao",
                     valor_da_demanda_em_kw: "",
                     distribuidora: "",
                     conta_de_energia: "",
@@ -521,7 +521,7 @@ $distribuidoras = array(
             submitForm() {
                 this.getOtherFelds(); // Busca campos que não foram buscados com v-model
                 
-                if (validateEmail()) {
+                if (validateForm()) {
                     fetch(`${baseUrl}/wp-json/simulador_quanta/v1/submit_form`, {
                         method: 'POST',
                         headers: {

@@ -29,24 +29,55 @@ if (! class_exists('SEQ_Calculation')) {
     public function __construct()
     {
       add_action('rest_api_init', array($this, 'custom_api_routes'));
-			
-			// Configurações
-	  
-			// Distribuidora de exeção
-	    define("DISTRIBUIDORAS_DE_EXCECAO", [
-		    'enel',
-		    'light'
-	    ]);
-			
-	    // Porcentagem de juros ML
-	    define("DESCONTO_ML", get_option('seq_options')['seq_discount_ml'] ?? 0);
-			
-			// Porcentagem de juros GD
-	    define("DESCONTO_GD", get_option('seq_options')['seq_discount_gd'] ?? 0);
-			
-	    // Valor gasto mensal para ser resposta positiva
-	    define("GASTO_MENSAL_RESPOSTA_POSITIVA", 5000);
     }
+	  
+	  /**
+	   * Configurações do Cálculo
+	   *
+	   * @return void
+	   */
+		private function config()
+		{
+			// Distribuidora de exeção
+			define("DISTRIBUIDORAS_DE_EXCECAO", [
+				'enel',
+				'light'
+			]);
+			
+			// Porcentagem de desconto ML
+			define(
+				"DESCONTO_ML",
+				$this->getDiscount(
+					isset(get_option('seq_options')['seq_discount_ml']) ? get_option('seq_options')['seq_discount_ml'] : null,
+					20
+				)
+			);
+			
+			// Porcentagem de desconto GD
+			define(
+				"DESCONTO_GD",
+				$this->getDiscount(
+					isset(get_option('seq_options')['seq_discount_gd']) ? get_option('seq_options')['seq_discount_gd'] : null,
+					15
+				)
+			);
+			
+			// Valor gasto mensal para ser resposta positiva
+			define("GASTO_MENSAL_RESPOSTA_POSITIVA", 5000);
+		}
+	  
+	  /**
+	   * @param $discount
+	   * @param $standardValue
+	   * @return mixed
+	   */
+		private function getDiscount($discount, $standardValue)
+		{
+				if (!$discount || $discount <= 0)
+					return $standardValue;
+				
+				return $discount;
+		}
   
     /**
      * Adição das rotas de API
@@ -182,6 +213,8 @@ if (! class_exists('SEQ_Calculation')) {
     public function calculation($request)
     {
       try {
+	      $this->config(); // Seta as configurações
+				
         // Campos obrigatórios recebidos do Front
         $requireds = array(
           'valor_aproximado_dos_gastos_mensais_com_energia__r__',
@@ -320,7 +353,7 @@ if (! class_exists('SEQ_Calculation')) {
 	   */
     private function getValorDesconto($desconto)
     {
-      return $this->getTotalMes() * $desconto / 100;
+      return ($this->getTotalMes() * $desconto) / 100;
     }
 	  
 	  /**
