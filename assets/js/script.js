@@ -12,6 +12,12 @@ let succcessDiv = document.getElementById("success");
 let succcessTitleDiv = document.getElementById("success-title");
 let boxButtons = document.getElementById("q-box__buttons");
 let email = $('#email');
+let gastosMensaisValor = $('#gastos_mensais_valor');
+let gastosMensaisUnidadesValor = $('#gastos_mensais_unidades_valor');
+
+let initValidatePage1 = 0;
+let initValidatePage2 = 0;
+let initValidatePage3 = 0;
 
 form.onsubmit = () => {
   return false;
@@ -33,8 +39,7 @@ const progress = (value) => {
 };
 
 nextBtn.addEventListener("click", () => {
-  email.on('input', validateEmail);
-  if (validateEmail()) {
+  if (validateForm()) {
     current_step++;
     let previous_step = current_step - 1;
     if (current_step > 0 && current_step <= stepCount) {
@@ -204,27 +209,70 @@ gastos_mensais_unidades.oninput = function () {
   jQuery("#gastos_mensais_unidades_valor").maskMoney("mask");
 };
 
-// Validar email
-function updateFeedback(isValid= true) {
-  email.removeClass('is-valid is-invalid');
+// Validações
+function updateFeedback(field, isValid= true) {
+  field.removeClass('is-valid is-invalid');
   if (isValid)
-    email.addClass('is-valid');
+    field.addClass('is-valid');
   else
-    email.addClass('is-invalid');
+    field.addClass('is-invalid');
 }
 
+function validateForm() {
+  if (current_step === 0 && initValidatePage1 === 0) {
+    initValidatePage1++;
+    email.on('input', validateEmail);
+  }
+
+  if (current_step === 1 && initValidatePage2 === 0) {
+    initValidatePage2++;
+    $("#gastos_mensais").on('change', validateExpenses);
+    $("#gastos_mensais_unidades").on('change', validateExpenses);
+    gastosMensaisValor.on('blur', validateExpenses);
+    gastosMensaisUnidadesValor.on('blur', validateExpenses);
+  }
+
+  if (current_step === 2 && initValidatePage3 === 0) {
+    initValidatePage3++;
+  }
+
+  if (!validateEmail())
+    return false;
+
+  if (current_step === 1 && !validateExpenses())
+    return false;
+
+  return true;
+}
+// END Validações
+
+// Validar Email
 function validateEmail() {
   if (email.val().trim() === '') {
-    updateFeedback(false);
+    updateFeedback(email, false);
     return false;
   }
 
   let regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
   let isValid = regex.test(email.val());
-  updateFeedback(isValid);
+  updateFeedback(email, isValid);
   return isValid;
 }
-// END Validar email
+// END Validar Email
+
+// Validar Gastos
+
+function validateExpenses() {
+  if (gastosMensaisValor.maskMoney('unmasked')[0] <= 0 && gastosMensaisUnidadesValor.maskMoney('unmasked')[0] <= 0) {
+    updateFeedback(gastosMensaisValor, false);
+    return false
+  }
+
+  gastosMensaisValor.removeClass('is-valid is-invalid');
+  return true;
+}
+
+// END Validar Gastos
 
 //END Range
 
