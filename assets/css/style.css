@@ -61,7 +61,7 @@
 }
 #form-simulador .text-highlight {
   font-family: "Raleway", sans-serif;
-  color: #ffc149;
+  color: #009E96;
 }
 #form-simulador a {
   font-family: "Raleway", sans-serif;
@@ -141,7 +141,7 @@
   padding-bottom: 0.5em;
 }
 #form-simulador .btn-white:hover {
-  background-color: #ffc149;
+  background-color: #009E96;
 }
 #form-simulador .btn-outline-primary {
   color: #1f8ece;
@@ -149,8 +149,8 @@
   border-radius: 100px;
 }
 #form-simulador .btn-outline-primary:hover {
-  border: 1px solid #ffc149;
-  background-color: #ffc149;
+  border: 1px solid #009E96;
+  background-color: #009E96;
   color: #fff;
 }
 #form-simulador .mostrador-etapas > img {
@@ -226,7 +226,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: #ffc149;
+  background: #009E96;
   content: "";
   z-index: -2;
   -webkit-transition: -webkit-transform 0.3s;
@@ -271,7 +271,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: #ffc149;
+  background: #009E96;
   content: "";
   z-index: -2;
   -webkit-transition: -webkit-transform 0.3s;
@@ -315,7 +315,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: #ffc149;
+  background: #009E96;
   content: "";
   z-index: -2;
   -webkit-transition: -webkit-transform 0.3s;
@@ -462,7 +462,7 @@
 #form-simulador input[type=text]:focus,
 #form-simulador input[type=email]:focus,
 #form-simulador input[type=file]:focus {
-  border: 1px solid #ffc149;
+  border: 1px solid #009E96;
   border-radius: 5px;
   outline: 0px !important;
   -moz-appearance: none;
@@ -485,23 +485,23 @@
   color: #fff;
 }
 #form-simulador input[type=file]::-webkit-file-upload-button:hover {
-  background-color: #ffc149 !important;
+  background-color: #009E96 !important;
 }
 #form-simulador input[type=file]::file-selector-button:hover {
-  background-color: #ffc149 !important;
+  background-color: #009E96 !important;
 }
 #form-simulador input[type=file]::-webkit-file-upload-button:hover {
-  background-color: #ffc149 !important;
+  background-color: #009E96 !important;
 }
 #form-simulador input[type=file]::file-selector-button:hover {
-  background-color: #ffc149 !important;
+  background-color: #009E96 !important;
 }
 #form-simulador .form-select {
   padding: 8px 14px;
   border: 1px solid #1f8ece;
 }
 #form-simulador .form-select:focus {
-  border: 1px solid #ffc149;
+  border: 1px solid #009E96;
   border-radius: 5px;
   outline: 0px !important;
   -moz-appearance: none;
@@ -536,8 +536,8 @@
   border: 1px solid #1f8ece;
 }
 #form-simulador .conheceu-radio-group .conheceu-label:hover {
-  border: 1px solid #ffc149;
-  background-color: #ffc149;
+  border: 1px solid #009E96;
+  background-color: #009E96;
   color: #fff;
   cursor: pointer;
 }
@@ -575,24 +575,24 @@
   /* Set a specific slider handle width */
   height: 18px;
   /* Slider handle height */
-  background: #ffc149;
+  background: #009E96;
   /* Green background */
   cursor: pointer;
   /* Cursor on hover */
   border-radius: 50%;
-  border: 1px solid #ffc149;
+  border: 1px solid #009E96;
 }
 #form-simulador .range-slider::-moz-range-thumb {
   width: 18px;
   /* Set a specific slider handle width */
   height: 18px;
   /* Slider handle height */
-  background: #ffc149;
+  background: #009E96;
   /* Green background */
   cursor: pointer;
   /* Cursor on hover */
   border-radius: 50%;
-  border: 1px solid #ffc149;
+  border: 1px solid #009E96;
 }
 #form-simulador #success,
 #form-simulador #success-title {
@@ -613,7 +613,7 @@
 }
 #form-simulador .result-item {
   font-size: 2em;
-  color: #ffc149;
+  color: #009E96;
   line-height: 1.5;
 }
 #form-simulador .result-item--caption {
@@ -621,7 +621,7 @@
   color: #828282;
 }
 #form-simulador .result-item strong {
-  color: #ffc149;
+  color: #009E96;
 }
 #form-simulador .back-link {
   font-weight: 700;
@@ -630,7 +630,7 @@
   font-size: 18px;
 }
 #form-simulador .back-link:hover {
-  color: #ffc149;
+  color: #009E96;
 }
 #form-simulador .back-link:hover {
   color: #38b0d8;
