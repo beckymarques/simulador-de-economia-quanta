@@ -129,6 +129,7 @@
   width: 45px;
   height: auto;
   margin-left: 1em;
+  fill: #1f8ece;
 }
 #form-simulador .btn-duvidas {
   font-size: 1em;
@@ -143,6 +144,9 @@
 #form-simulador .btn-white:hover {
   background-color: #009E96;
   color: #fff;
+}
+#form-simulador .btn-white:hover .btn-img {
+  fill: #fff;
 }
 #form-simulador .btn-outline-primary {
   color: #1f8ece;

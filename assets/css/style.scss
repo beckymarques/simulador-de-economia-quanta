@@ -140,6 +140,7 @@ $background: #f7f9ff;
     width: 45px;
     height: auto;
     margin-left: 1em;
+    fill: $primary;
   }
   .btn-duvidas{
     font-size: 1em;
@@ -153,6 +154,9 @@ $background: #f7f9ff;
     &:hover {
       background-color: $highlight;
       color: $white;
+    }
+    &:hover .btn-img{
+      fill: $white;
     }
   }
   .btn-outline-primary {
