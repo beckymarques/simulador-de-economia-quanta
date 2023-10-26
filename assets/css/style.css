@@ -335,6 +335,10 @@
 #form-simulador .progress {
   border-radius: 0px !important;
 }
+#form-simulador .bg-highlight {
+  opacity: 1;
+  background-color: #009E96;
+}
 #form-simulador .q__question {
   position: relative;
 }

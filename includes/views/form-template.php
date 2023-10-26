@@ -170,7 +170,7 @@ $distribuidoras = array(
       <div class="col-lg-7 mx-0 px-0">
         <div class="progress">
           <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="50"
-            class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar"
+            class="progress-bar progress-bar-striped progress-bar-animated bg-highlight" role="progressbar"
             style="width: 0%"></div>
         </div>
         <div id="qbox-container" class="p-3 p-md-5">

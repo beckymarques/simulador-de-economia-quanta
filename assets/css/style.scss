@@ -329,6 +329,10 @@ $background: #f7f9ff;
   .progress {
     border-radius: 0px !important;
   }
+  .bg-highlight{
+    opacity: 1;
+    background-color: $highlight;
+  }
   .q__question {
     position: relative;
     &:not(:last-child) {
