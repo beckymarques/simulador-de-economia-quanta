@@ -1,11 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 27.8.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 138 138" style="enable-background:new 0 0 138 138;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:#FFC149;}
-	.st1{fill:none;stroke:#FFFFFF;stroke-width:8.7112;stroke-linecap:round;stroke-linejoin:round;}
-</style>
-<circle class="st0" cx="69" cy="69" r="69"/>
-<path class="st1" d="M76.7,25.6L29.3,74.3l39.1,3l-7,34.4L108.8,63l-39.1-3L76.7,25.6z"/>
+<svg width="109" height="108" viewBox="0 0 109 108" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="54.5" cy="54" r="54" fill="#EBEBEB"/>
+<path d="M68.265 32.237L59.7123 52.2304H72.1526C73.5966 52.2304 74.9295 53.119 75.4848 54.4519C75.9291 55.8958 75.5959 57.4509 74.4852 58.4506L46.0501 83.3312C44.7172 84.3309 42.94 84.442 41.6071 83.4423C40.2742 82.5537 39.7189 80.7765 40.3853 79.2215L48.938 59.2281H36.6088C35.0537 59.2281 33.7208 58.3395 33.2765 57.0066C32.7212 55.5626 33.0544 54.0076 34.1651 53.0079L62.6002 28.1272C63.9331 27.1275 65.7103 27.0165 67.0432 28.0161C68.3761 28.9047 68.9315 30.6819 68.265 32.237Z" fill="#009FE3"/>
 </svg>
