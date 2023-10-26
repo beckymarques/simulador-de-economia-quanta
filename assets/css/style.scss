@@ -152,6 +152,7 @@ $background: #f7f9ff;
     padding-bottom: 0.5em;
     &:hover {
       background-color: $highlight;
+      color: $white;
     }
   }
   .btn-outline-primary {
