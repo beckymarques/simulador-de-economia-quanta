@@ -199,12 +199,18 @@ $distribuidoras = array(
                 </div>
                 <hr>
                 <div class="mt-5">
-                  <label class="form-label">Nome e Sobrenome:</label>
-                  <input v-model="simulatorForm.firstname" class="form-control" name="firstname" id="firstname" type="text">
+                  <label class="form-label"><span class="text-danger">*</span> Nome e Sobrenome:</label>
+                  <input v-model="simulatorForm.firstname" class="form-control" name="firstname" id="firstname" type="text" aria-describedby="nameErrorFeedback" required>
+                  <div id="nameErrorFeedback" class="invalid-feedback">
+                    {{ simulatorForm.firstname.trim() === "" ? "Este campo é obrigatório." : "Verifique os dados e tente novamente."}}
+                  </div>
                 </div>
                 <div class="mt-3">
-                  <label class="form-label">Nome da Empresa:</label>
-                  <input v-model="simulatorForm.company" class="form-control" name="company" id="company" type="text">
+                  <label class="form-label"><span class="text-danger">*</span> Nome da Empresa:</label>
+                  <input v-model="simulatorForm.company" class="form-control" name="company" id="company" type="text" aria-describedby="companyErrorFeedback" required>
+                  <div id="companyErrorFeedback" class="invalid-feedback">
+                  {{ simulatorForm.company.trim() === "" ? "Este campo é obrigatório." : "Verifique os dados e tente novamente."}}
+                  </div>
                 </div>
                 <div class="mt-3">
                   <label class="form-label">Cargo:</label>
@@ -251,12 +257,12 @@ $distribuidoras = array(
                 </div>
                 <hr>
                 <div class="mt-5">
-                  <label class="form-label" for="gastos_mensais">Valor médio da conta de luz de sua
+                  <label class="form-label" for="gastos_mensais"><span class="text-danger">*</span> Valor médio da conta de luz de sua
                     empresa:</label>
                   <div class="d-flex align-items-center">
                     <div class="me-5">
                       <input type="range" class="range-slider campo-range" name="gastos_mensais" id="gastos_mensais"
-                        min="0" max="100000" step="100" value="0">
+                        min="0" max="100000" step="500" value="0">
                     </div>
                     <div>
                       <input ref="gastos_mensais" type="text" class="form-control" name="gastos_mensais_valor" id="gastos_mensais_valor"
@@ -273,7 +279,7 @@ $distribuidoras = array(
                   <div class="d-flex align-items-center">
                     <div class="me-5">
                       <input type="range" class="range-slider campo-range" name="gastos_mensais_unidades"
-                        id="gastos_mensais_unidades" min="0" max="100000" step="100" value="0">
+                        id="gastos_mensais_unidades" min="0" max="100000" step="500" value="0">
                     </div>
                     <div>
                       <input ref="gastos_mensais_unidades" type="text" class="form-control" name="gastos_mensais_unidades_valor"
@@ -300,8 +306,8 @@ $distribuidoras = array(
                 </div>
                 <div class="mt-3 valor_demanda_kwh d-none">
                   <div class="rotulo"><label for="valor_demanda_kwh">Qual é o valor da demanda em kW?</label></div>
-                  <div class="campo"><input ref="valor_demanda" type="text" data-mask="# kWh" data-mask-reverse="true" class="form-control"
-                      name="valor_demanda_kwh" id="valor_demanda_kwh" placeholder="0 kWh"></div>
+                  <div class="campo"><input ref="valor_demanda" type="text" data-mask="# kW" data-mask-reverse="true" class="form-control"
+                      name="valor_demanda_kwh" id="valor_demanda_kwh" placeholder="0 kW"></div>
                 </div>
                 <div class="mt-3">
                   <div class="distribuidora">
