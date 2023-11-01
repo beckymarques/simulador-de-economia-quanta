@@ -306,14 +306,15 @@ $distribuidoras = array(
                 </div>
                 <div class="mt-3 valor_demanda_kwh d-none">
                   <div class="rotulo"><label for="valor_demanda_kwh">Qual é o valor da demanda em kW?</label></div>
-                  <div class="campo"><input ref="valor_demanda" type="text" data-mask="# kW" data-mask-reverse="true" class="form-control"
-                      name="valor_demanda_kwh" id="valor_demanda_kwh" placeholder="0 kW"></div>
+                  <div class="campo"><input ref="valor_demanda" type="text" data-mask="# kW" data-mask-reverse="true"
+                      class="form-control" name="valor_demanda_kwh" id="valor_demanda_kwh" placeholder="0 kW"></div>
                 </div>
                 <div class="mt-3">
                   <div class="distribuidora">
                     <div class="rotulo"><label for="distribuidora">Selecione a distribuidora</label></div>
                     <div class="campo">
-                      <select ref="distribuidora" name="distribuidora" id="distribuidora" class="form-select js-choice" required>
+                      <select ref="distribuidora" name="distribuidora" id="distribuidora" class="form-select js-choice"
+                        required>
                         <option class="choices__item--disabled" value="" selected disabled>Selecione uma opção</option>
                         <?php if (!empty($distribuidoras)) : ?>
                         <?php foreach ($distribuidoras as $item) : ?>
@@ -356,8 +357,9 @@ $distribuidoras = array(
                         fatura:</label>
                       <div class="anexo_fatura">
                         <div class="campo campos-file">
-                          <input @change="uploadImage" type="file" class="form-control" accept=".doc,.docx,.pdf,.png,.jpeg,.jpg"
-                            name="conta_de_energia" id="conta_de_energia" multiple="multiple">
+                          <input @change="uploadImage" type="file" class="form-control"
+                            accept=".doc,.docx,.pdf,.png,.jpeg,.jpg" name="conta_de_energia" id="conta_de_energia"
+                            multiple="multiple">
                         </div>
                       </div>
                     </div>
@@ -365,38 +367,45 @@ $distribuidoras = array(
                       <label class="form-label" for="">Por onde nos conheceu?</label>
                       <div class="como_conheceu">
                         <div class="form-check form-check-inline conheceu-radio-group">
-                          <input v-model="simulatorForm.como_conheceu_a_quanta_geracao" class="form-check-input conheceu-input" type="radio" name="como_conheceu"
+                          <input v-model="simulatorForm.como_conheceu_a_quanta_geracao"
+                            class="form-check-input conheceu-input" type="radio" name="como_conheceu"
                             id="como_conheceu_1" value="Indicação" required> <label
                             class="form-check-label conheceu-label rounded" for="como_conheceu_1">Indicação</label>
                         </div>
                         <div class="form-check form-check-inline conheceu-radio-group">
-                          <input v-model="simulatorForm.como_conheceu_a_quanta_geracao" class="form-check-input conheceu-input" type="radio" name="como_conheceu"
+                          <input v-model="simulatorForm.como_conheceu_a_quanta_geracao"
+                            class="form-check-input conheceu-input" type="radio" name="como_conheceu"
                             id="como_conheceu_2" value="Redes Sociais"><label
                             class="form-check-label conheceu-label rounded" for="como_conheceu_2">Redes
                             Sociais</label>
                         </div>
                         <div class="form-check form-check-inline conheceu-radio-group">
-                          <input v-model="simulatorForm.como_conheceu_a_quanta_geracao" class="form-check-input conheceu-input" type="radio" name="como_conheceu"
+                          <input v-model="simulatorForm.como_conheceu_a_quanta_geracao"
+                            class="form-check-input conheceu-input" type="radio" name="como_conheceu"
                             id="como_conheceu_3" value="Site"> <label class="form-check-label conheceu-label rounded"
                             for="como_conheceu_3">Site</label>
                         </div>
                         <div class="form-check form-check-inline conheceu-radio-group">
-                          <input v-model="simulatorForm.como_conheceu_a_quanta_geracao" class="form-check-input conheceu-input" type="radio" name="como_conheceu"
+                          <input v-model="simulatorForm.como_conheceu_a_quanta_geracao"
+                            class="form-check-input conheceu-input" type="radio" name="como_conheceu"
                             id="como_conheceu_4" value="Google"> <label class="form-check-label conheceu-label rounded"
                             for="como_conheceu_4">Google</label>
                         </div>
                         <div class="form-check form-check-inline conheceu-radio-group">
-                          <input v-model="simulatorForm.como_conheceu_a_quanta_geracao" class="form-check-input conheceu-input" type="radio" name="como_conheceu"
+                          <input v-model="simulatorForm.como_conheceu_a_quanta_geracao"
+                            class="form-check-input conheceu-input" type="radio" name="como_conheceu"
                             id="como_conheceu_5" value="Lives/Eventos"><label
                             class="form-check-label conheceu-label rounded" for="como_conheceu_5">Lives/Eventos</label>
                         </div>
                         <div class="form-check form-check-inline conheceu-radio-group">
-                          <input v-model="simulatorForm.como_conheceu_a_quanta_geracao" class="form-check-input conheceu-input" type="radio" name="como_conheceu"
+                          <input v-model="simulatorForm.como_conheceu_a_quanta_geracao"
+                            class="form-check-input conheceu-input" type="radio" name="como_conheceu"
                             id="como_conheceu_6" value="WhatsApp"> <label
                             class="form-check-label conheceu-label rounded" for="como_conheceu_6">WhatsApp</label>
                         </div>
                         <div class="form-check form-check-inline conheceu-radio-group">
-                          <input v-model="simulatorForm.como_conheceu_a_quanta_geracao" class="form-check-input conheceu-input" type="radio" name="como_conheceu"
+                          <input v-model="simulatorForm.como_conheceu_a_quanta_geracao"
+                            class="form-check-input conheceu-input" type="radio" name="como_conheceu"
                             id="como_conheceu_7" value="Outros"> <label class="form-check-label conheceu-label rounded"
                             for="como_conheceu_7">Outros</label>
                         </div>
@@ -406,8 +415,8 @@ $distribuidoras = array(
                   <div class="mt-5">
                     <div class="politca_privacidade">
                       <div class="form-check">
-                        <input v-model="simulatorForm.politica_privacidade" class="form-check-input" type="checkbox" name="politca_privacidade"
-                          id="politca_privacidade" required>
+                        <input v-model="simulatorForm.politica_privacidade" class="form-check-input" type="checkbox"
+                          name="politca_privacidade" id="politca_privacidade" required>
                         <label class="form-check-label" for="politca_privacidade">Li e estou de acordo com a política de
                           privacidade da Quanta.</label>
                       </div>
@@ -417,10 +426,10 @@ $distribuidoras = array(
               </div> <!-- step -->
               <div id="success">
                 <div id="positive" v-if="result.feedback === 'positive'">
-                    <?php include (SEQ_PLUGIN_VIEWS . 'result-positive.php'); ?>
+                  <?php include(SEQ_PLUGIN_VIEWS . 'result-positive.php'); ?>
                 </div>
                 <div id="negative" v-else>
-                    <?php include (SEQ_PLUGIN_VIEWS . 'result-negative.php'); ?>
+                  <?php include(SEQ_PLUGIN_VIEWS . 'result-negative.php'); ?>
                 </div>
               </div>
             </div>
@@ -433,8 +442,8 @@ $distribuidoras = array(
                       stroke-linecap="round" stroke-linejoin="round" />
                   </svg>
                 </span></button>
-              <button id="next-btn" @click="submitForm" type="button"><span class="badge rounded-pill"><svg width="33" height="33"
-                    viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <button id="next-btn" @click="submitForm" type="button"><span class="badge rounded-pill"><svg width="33"
+                    height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M7.06934 16.5001H25.9304" stroke="white" stroke-width="2.69444" stroke-linecap="round"
                       stroke-linejoin="round" />
                     <path d="M16.5 7.06952L25.9306 16.5001L16.5 25.9306" stroke="white" stroke-width="2.69444"
@@ -458,113 +467,115 @@ $distribuidoras = array(
 
 <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
 <script>
-    const baseUrl = "<?= home_url() ?>";
-    const { createApp } = Vue
-    createApp({
-        data() {
-            return {
-                emailIsInvalid: false,
-                // Campos do formulário
-                simulatorForm: {
-                    firstname: "",
-                    company: "",
-                    jobtitle: "",
-                    email: "",
-                    mobilephone: "",
-                    valor_aproximado_dos_gastos_mensais_com_energia__r__: "",
-                    faixa_gastos_mais_unidades: "",
-                    empresa_ja_possui_demanda_contratada: "Nao",
-                    valor_da_demanda_em_kw: "",
-                    distribuidora: "",
-                    conta_de_energia: "",
-                    como_conheceu_a_quanta_geracao: "",
-                    politica_privacidade: false
-                },
-                // Resposta do cálculo
-                result: {
-                    feedback: "negative",
-                    valorDesconto: 0,
-                    totalMesComDesconto: 0,
-                    economiaAnual: 0
-                }
-            }
+const baseUrl = "<?= home_url() ?>";
+const {
+  createApp
+} = Vue
+createApp({
+    data() {
+      return {
+        emailIsInvalid: false,
+        // Campos do formulário
+        simulatorForm: {
+          firstname: "",
+          company: "",
+          jobtitle: "",
+          email: "",
+          mobilephone: "",
+          valor_aproximado_dos_gastos_mensais_com_energia__r__: "",
+          faixa_gastos_mais_unidades: "",
+          empresa_ja_possui_demanda_contratada: "Nao",
+          valor_da_demanda_em_kw: "",
+          distribuidora: "",
+          conta_de_energia: "",
+          como_conheceu_a_quanta_geracao: "",
+          politica_privacidade: false
         },
-        methods: {
-            // Calcula e envia o formulário
-            submit() {
-                this.calculation();
-                this.submitForm();
-            },
-            // Requisição de cálculo para a API
-            calculation() {
-                this.getOtherFelds(); // Busca campos que não foram buscados com v-model
-                fetch(`${baseUrl}/wp-json/simulador_quanta/v1/calculation`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(this.simulatorForm),
-                })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Erro na requisição');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        if (data.success)
-                            this.result = data.data;
-                    });
-            },
-            // Busca campos que não foram buscados com v-model
-            getOtherFelds() {
-                this.simulatorForm.valor_aproximado_dos_gastos_mensais_com_energia__r__ = this.$refs.gastos_mensais.value;
-                this.simulatorForm.faixa_gastos_mais_unidades = this.$refs.gastos_mensais_unidades.value;
-                this.simulatorForm.distribuidora = this.$refs.distribuidora.value;
-                this.simulatorForm.valor_da_demanda_em_kw = this.$refs.valor_demanda.value;
-            },
-            // Requisição de envio de formulário para a API
-            submitForm() {
-                this.getOtherFelds(); // Busca campos que não foram buscados com v-model
-                
-                if (validateForm()) {
-                    fetch(`${baseUrl}/wp-json/simulador_quanta/v1/submit_form`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(this.simulatorForm),
-                    });
-                }
-            },
-            // Busca a imagem e transforma em base64
-            uploadImage(event) {
-                const file = event.target.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = () => {
-                        this.simulatorForm.conta_de_energia = reader.result;
-                    };
-                    reader.readAsDataURL(file);
-                }
-            },
-            // Formata o float em valor monetário brasileiro com duas casas decimais
-            numberFormat(number) {
-                number = number.toFixed(2);
-        
-                var nstr = number.toString();
-                nstr += '';
-                x = nstr.split('.');
-                x1 = x[0];
-                x2 = x.length > 1 ? ',' + x[1] : '';
-                var rgx = /(\d+)(\d{3})/;
-        
-                while (rgx.test(x1))
-                    x1 = x1.replace(rgx, '$1' + '.' + '$2');
-                
-                return x1 + x2;
-            }
+        // Resposta do cálculo
+        result: {
+          feedback: "negative",
+          valorDesconto: 0,
+          totalMesComDesconto: 0,
+          economiaAnual: 0
         }
-    })
-    .mount('#form-simulador')
+      }
+    },
+    methods: {
+      // Calcula e envia o formulário
+      submit() {
+        this.calculation();
+        this.submitForm();
+      },
+      // Requisição de cálculo para a API
+      calculation() {
+        this.getOtherFelds(); // Busca campos que não foram buscados com v-model
+        fetch(`${baseUrl}/wp-json/simulador_quanta/v1/calculation`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(this.simulatorForm),
+          })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Erro na requisição');
+            }
+            return response.json();
+          })
+          .then(data => {
+            if (data.success)
+              this.result = data.data;
+          });
+      },
+      // Busca campos que não foram buscados com v-model
+      getOtherFelds() {
+        this.simulatorForm.valor_aproximado_dos_gastos_mensais_com_energia__r__ = this.$refs.gastos_mensais.value;
+        this.simulatorForm.faixa_gastos_mais_unidades = this.$refs.gastos_mensais_unidades.value;
+        this.simulatorForm.distribuidora = this.$refs.distribuidora.value;
+        this.simulatorForm.valor_da_demanda_em_kw = this.$refs.valor_demanda.value;
+      },
+      // Requisição de envio de formulário para a API
+      submitForm() {
+        this.getOtherFelds(); // Busca campos que não foram buscados com v-model
+
+        if (validateForm()) {
+          fetch(`${baseUrl}/wp-json/simulador_quanta/v1/submit_form`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(this.simulatorForm),
+          });
+        }
+      },
+      // Busca a imagem e transforma em base64
+      uploadImage(event) {
+        const file = event.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = () => {
+            this.simulatorForm.conta_de_energia = reader.result;
+          };
+          reader.readAsDataURL(file);
+        }
+      },
+      // Formata o float em valor monetário brasileiro com duas casas decimais
+      numberFormat(number) {
+        number = number.toFixed(2);
+
+        var nstr = number.toString();
+        nstr += '';
+        x = nstr.split('.');
+        x1 = x[0];
+        x2 = x.length > 1 ? ',' + x[1] : '';
+        var rgx = /(\d+)(\d{3})/;
+
+        while (rgx.test(x1))
+          x1 = x1.replace(rgx, '$1' + '.' + '$2');
+
+        return x1 + x2;
+      }
+    }
+  })
+  .mount('#form-simulador')
 </script>

@@ -1,16 +1,18 @@
 //Form Steps
-var $ = jQuery.noConflict()
+var $ = jQuery.noConflict();
 let step = document.getElementsByClassName("step");
 let stepTitle = document.getElementsByClassName("step-title");
 let prevBtn = document.getElementById("prev-btn");
 let nextBtn = document.getElementById("next-btn");
 let submitBtn = document.getElementById("submit-btn");
-let form = document.getElementById("form-wrapper")
+let form = document.getElementById("form-wrapper");
 let preloader = document.getElementById("preloader-wrapper");
 let bodyElement = document.querySelector("body");
 let succcessDiv = document.getElementById("success");
 let succcessTitleDiv = document.getElementById("success-title");
 let boxButtons = document.getElementById("q-box__buttons");
+let firstname = $('#firstname');
+let company = $('#company');
 let email = $('#email');
 let gastosMensaisValor = $('#gastos_mensais_valor');
 let gastosMensaisUnidadesValor = $('#gastos_mensais_unidades_valor');
@@ -152,7 +154,7 @@ jQuery(function () {
   });
 
   valor_demanda_kwh.maskMoney({
-    suffix: " kWh",
+    suffix: " kW",
     affixesStay: false,
     thousands: ".",
     precision: 0,
@@ -236,6 +238,12 @@ function validateForm() {
     initValidatePage3++;
   }
 
+  if (!validateName())
+    return false;
+
+  if (!validateCompany())
+    return false;
+
   if (!validateEmail())
     return false;
 
@@ -265,7 +273,7 @@ function validateEmail() {
 function validateExpenses() {
   if (gastosMensaisValor.maskMoney('unmasked')[0] <= 0 && gastosMensaisUnidadesValor.maskMoney('unmasked')[0] <= 0) {
     updateFeedback(gastosMensaisValor, false);
-    return false
+    return false;
   }
 
   gastosMensaisValor.removeClass('is-valid is-invalid');
@@ -273,6 +281,30 @@ function validateExpenses() {
 }
 
 // END Validar Gastos
+
+// Validar Nome
+function validateName() {
+  if (firstname.val().trim() === '') {
+    updateFeedback(firstname, false);
+    return false;
+  }
+
+  firstname.removeClass('is-valid is-invalid');
+  return true;
+}
+//END Validar Nome
+
+// Validar Company
+function validateCompany() {
+  if (company.val().trim() === '') {
+    updateFeedback(company, false);
+    return false;
+  }
+
+  company.removeClass('is-valid is-invalid');
+  return true;
+}
+//END Validar Company
 
 //END Range
 
