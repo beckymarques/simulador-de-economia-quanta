@@ -40,7 +40,7 @@ if (! class_exists('SEQ_Calculation')) {
 		{
 			// Distribuidora de exeção
 			define("DISTRIBUIDORAS_DE_EXCECAO", [
-				'enel',
+				'enel rj',
 				'light'
 			]);
 			
@@ -165,6 +165,8 @@ if (! class_exists('SEQ_Calculation')) {
 						)
 					);
 				}
+	      
+	      return $this->response(200, "", $data);
 				
 				// Forma Endpoint
 				$url = "{$this->formSubmissionResource}/{$this->portalId}/{$this->formGuid}";
