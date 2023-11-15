@@ -165,8 +165,6 @@ if (! class_exists('SEQ_Calculation')) {
 						)
 					);
 				}
-	      
-	      return $this->response(200, "", $data);
 				
 				// Forma Endpoint
 				$url = "{$this->formSubmissionResource}/{$this->portalId}/{$this->formGuid}";
