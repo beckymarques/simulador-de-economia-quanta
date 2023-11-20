@@ -40,7 +40,7 @@ if (! class_exists('SEQ_Calculation')) {
 		{
 			// Distribuidora de exeção
 			define("DISTRIBUIDORAS_DE_EXCECAO", [
-				'enel',
+				'enel rj',
 				'light'
 			]);
 			

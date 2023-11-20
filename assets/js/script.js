@@ -16,6 +16,7 @@ let company = $('#company');
 let email = $('#email');
 let gastosMensaisValor = $('#gastos_mensais_valor');
 let gastosMensaisUnidadesValor = $('#gastos_mensais_unidades_valor');
+let politicaPrivacidade = $('#politca_privacidade');
 
 let initValidatePage1 = 0;
 let initValidatePage2 = 0;
@@ -108,28 +109,31 @@ prevBtn.addEventListener("click", () => {
 });
 
 submitBtn.addEventListener("click", async () => {
-  preloader.classList.add("d-block");
+  if (validateForm()) {
+    current_step++;
+    preloader.classList.add("d-block");
 
-  const timer = (ms) => new Promise((res) => setTimeout(res, ms));
+    const timer = (ms) => new Promise((res) => setTimeout(res, ms));
 
-  timer(3000)
-    .then(() => {
-      bodyElement.classList.add("loaded");
-    })
-    .then(() => {
-      step[stepCount].classList.remove("d-block");
-      stepTitle[stepCount].classList.remove("d-block");
-      step[stepCount].classList.add("d-none");
-      stepTitle[stepCount].classList.add("d-none");
-      prevBtn.classList.remove("d-inline-block");
-      prevBtn.classList.add("d-none");
-      submitBtn.classList.remove("d-inline-block");
-      submitBtn.classList.add("d-none");
-      succcessDiv.classList.remove("d-none");
-      succcessTitleDiv.classList.remove("d-none");
-      succcessDiv.classList.add("d-block");
-      succcessTitleDiv.classList.add("d-block");
-    });
+    timer(3000)
+        .then(() => {
+          bodyElement.classList.add("loaded");
+        })
+        .then(() => {
+          step[stepCount].classList.remove("d-block");
+          stepTitle[stepCount].classList.remove("d-block");
+          step[stepCount].classList.add("d-none");
+          stepTitle[stepCount].classList.add("d-none");
+          prevBtn.classList.remove("d-inline-block");
+          prevBtn.classList.add("d-none");
+          submitBtn.classList.remove("d-inline-block");
+          submitBtn.classList.add("d-none");
+          succcessDiv.classList.remove("d-none");
+          succcessTitleDiv.classList.remove("d-none");
+          succcessDiv.classList.add("d-block");
+          succcessTitleDiv.classList.add("d-block");
+        });
+  }
 });
 
 //Format label inputs
@@ -236,6 +240,7 @@ function validateForm() {
 
   if (current_step === 2 && initValidatePage3 === 0) {
     initValidatePage3++;
+    politicaPrivacidade.on('change', validatePoliticaPrivacidade);
   }
 
   if (!validateName())
@@ -248,6 +253,9 @@ function validateForm() {
     return false;
 
   if (current_step === 1 && !validateExpenses())
+    return false;
+
+  if (current_step === 2 && !validatePoliticaPrivacidade())
     return false;
 
   return true;
@@ -267,6 +275,18 @@ function validateEmail() {
   return isValid;
 }
 // END Validar Email
+
+// Validar Politica de privacidade
+function validatePoliticaPrivacidade() {
+  if (!politicaPrivacidade.is(':checked')) {
+    updateFeedback(politicaPrivacidade, false);
+    return false;
+  }
+
+  politicaPrivacidade.removeClass('is-valid is-invalid');
+  return true;
+}
+// END Validar Politica de privacidade
 
 // Validar Gastos
 
