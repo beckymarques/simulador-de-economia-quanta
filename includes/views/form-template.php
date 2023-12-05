@@ -471,7 +471,7 @@ $distribuidoras = array(
                   </div> <!-- Pol privacidade -->
                 </div>
               </div> <!-- step -->
-              <div id="success">
+              <div id="success" class="w-100">
                 <div id="positive" v-if="result.feedback === 'positive'">
                   <?php include(SEQ_PLUGIN_VIEWS . 'result-positive.php'); ?>
                 </div>
