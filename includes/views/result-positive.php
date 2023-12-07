@@ -29,7 +29,6 @@ rel="noopener noreferrer">
   </svg>
 </div>
 <div class="ms-3 d-flex flex-column justify-content-center">
-  <span><strong>Dúvidas?</strong></span><br>
   <span>Fale agora com um especialista!</span>
 </div>
 </a>

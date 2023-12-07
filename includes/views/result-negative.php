@@ -26,7 +26,6 @@ rel="noopener noreferrer">
   </svg>
 </div>
 <div class="ms-3 d-flex flex-column justify-content-center">
-  <span><strong>Dúvidas?</strong></span><br>
   <span>Fale com um especialista!</span>
 </div>
 </a>
