@@ -472,8 +472,8 @@ $distribuidoras = array(
                 <div id="positive" v-if="result.feedback === 'positive'">
                   <?php include(SEQ_PLUGIN_VIEWS . 'result-positive.php'); ?>
                 </div>
-                <div id="negative" v-else>
-                  <?php include(SEQ_PLUGIN_VIEWS . 'result-negative.php'); ?>
+                <div id="negative" v-else-if="result.feedback === 'negative'">
+                    <?php include (SEQ_PLUGIN_VIEWS . 'result-negative.php'); ?>
                 </div>
               </div>
             </div>

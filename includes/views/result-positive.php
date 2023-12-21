@@ -4,18 +4,18 @@
 <h4><img class="img-fluid me-3 success-item"
     src="<?php echo SEQ_PLUGIN_URL . 'assets/images/circle.svg'; ?>"
     alt><strong>Economia mensal
-    </strong></h4>
-<p class="result-item">R$  {{ numberFormat(result.valorDesconto) }} <span class="result-item--caption"></span></p>
+    estimada</strong></h4>
+<p class="result-item">R$  {{ result.valorDesconto ? numberFormat(result.valorDesconto) : "" }} <span class="result-item--caption">em média</span></p>
 <h4><img class="img-fluid me-3 success-item"
     src="<?php echo SEQ_PLUGIN_URL . 'assets/images/circle.svg'; ?>"
     alt><strong>Novo gasto mensal
-    </strong></h4>
-<p class="result-item">R$ {{ numberFormat(result.totalMesComDesconto) }} <span class="result-item--caption"></span></p>
+    estimado</strong></h4>
+<p class="result-item">R$ {{ result.totalMesComDesconto ? numberFormat(result.totalMesComDesconto) : "" }} <span class="result-item--caption">em média</span></p>
 <h4><img class="img-fluid me-3 success-item"
     src="<?php echo SEQ_PLUGIN_URL . 'assets/images/circle.svg'; ?>"
     alt><strong>Economia anual
-    </strong></h4>
-<p class="result-item">R$ {{ numberFormat(result.economiaAnual) }} <span class="result-item--caption"></span></p>
+    estimada</strong></h4>
+<p class="result-item">R$ {{ result.economiaAnual ? numberFormat(result.economiaAnual) : "" }} <span class="result-item--caption">em média</span></p>
 </div>
 <!-- END Resultado -->
 <a class="btn btn-outline-primary text-start d-flex mt-4"
