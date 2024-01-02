@@ -265,9 +265,12 @@ $distribuidoras = array(
                   </div>
                 </div>
                 <div class="mt-3">
-                  <label class="form-label">Celular com DDD:</label><br>
+                  <label class="form-label"><span class="text-danger">*</span> Celular com DDD:</label>
                   <input v-model="simulatorForm.mobilephone" class="form-control w-100" name="mobilephone" id="mobilephone" type="text"
                     data-mask="(00) 00000-0000">
+                    <div id="emailErrorFeedback" class="invalid-feedback">
+                    {{ simulatorForm.mobilephone.trim() === "" ? "Este campo é obrigatório." : "Este Celular é inválido."}}
+                  </div>                    
                 </div>
                 <div class="utms">
                   <input type="hidden" class="campo-utm" name="utm_source" id="utm_source" placeholder="">
