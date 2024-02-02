@@ -2,7 +2,7 @@
 /*
 Plugin Name: Simulador de Economia Quanta
 Description: Plugin para exibir o Simulador de Economia da Quanta Energia.
-Version: 1.0
+Version: 1.9.4
 Author: Becky Marques
 Author URI: https://github.com/beckymarques
 Requires at least: 6.1.3

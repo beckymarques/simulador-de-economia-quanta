@@ -203,7 +203,7 @@
   line-height: 1.6;
 }
 #form-simulador button#prev-btn {
-  font-size: 17px;
+  font-size: 15px;
   font-weight: bold;
   position: relative;
   width: 130px;
@@ -243,7 +243,7 @@
   transition: transform 0.3s, -webkit-transform 0.3s;
 }
 #form-simulador button#next-btn {
-  font-size: 17px;
+  font-size: 15px;
   font-weight: bold;
   position: relative;
   width: 130px;
@@ -283,7 +283,7 @@
   transition: transform 0.3s, -webkit-transform 0.3s;
 }
 #form-simulador button#submit-btn {
-  font-size: 17px;
+  font-size: 15px;
   font-weight: bold;
   position: relative;
   height: 50px;
@@ -655,20 +655,22 @@
     padding-top: 50px;
   }
   #form-simulador .breadcrumb-item {
-    font-size: 0.9em;
-    padding-left: 0 !important;
+    font-size: 0.75em;
     padding-bottom: 0.5em;
   }
   #form-simulador .breadcrumb-item::before {
     display: none;
   }
   #form-simulador .mostrador-etapas > img {
-    width: 100%;
+    width: 75%;
   }
 }
 @media (max-width: 560px) {
   #form-simulador #title-container {
     padding-top: 45px;
+  }
+  #form-simulador button#submit-btn, #form-simulador button#next-btn, #form-simulador button#prev-btn {
+    font-size: 8px;
   }
 }
 

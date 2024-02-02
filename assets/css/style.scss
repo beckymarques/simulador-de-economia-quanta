@@ -215,7 +215,7 @@ $background: #f7f9ff;
     }
   }
   button#prev-btn {
-    font-size: 17px;
+    font-size: 15px;
     font-weight: bold;
     position: relative;
     width: 130px;
@@ -251,7 +251,7 @@ $background: #f7f9ff;
     }
   }
   button#next-btn {
-    font-size: 17px;
+    font-size: 15px;
     font-weight: bold;
     position: relative;
     width: 130px;
@@ -287,7 +287,7 @@ $background: #f7f9ff;
     }
   }
   button#submit-btn {
-    font-size: 17px;
+    font-size: 15px;
     font-weight: bold;
     position: relative;
     height: 50px;
@@ -644,20 +644,22 @@ $background: #f7f9ff;
       padding-top: 50px;
     }
     .breadcrumb-item {
-      font-size: 0.9em;
-      padding-left: 0 !important;
+      font-size: .75em;
       padding-bottom: 0.5em;
       &::before {
         display: none;
       }
     }
     .mostrador-etapas > img {
-      width: 100%;
+      width: 75%;
     }
   }
   @media (max-width: 560px) {
     #title-container {
       padding-top: 45px;
+    }
+    button#submit-btn, button#next-btn, button#prev-btn {
+      font-size: 8px;
     }
   }
 }
