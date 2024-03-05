@@ -124,7 +124,7 @@ $distribuidoras = array(
               </svg>
             </div>
             <h2>Receba <strong>gratuitamente</strong> uma avaliação da conta de energia da sua empresa agora!</h2>
-            <h3 class="mt-5 mb-5">Para iniciar, <strong>preencha os dados ao lado</strong>.</h3>
+            <h3 class="mt-5 mb-5">Para iniciar, <strong>preencha os dados</strong>.</h3>
             <a class="btn btn-white text-start d-flex mt-4 btn-duvidas" href="<?= $linkWhats; ?>" target="_blank"
               rel="noopener noreferrer">
               <div class="d-flex align-items-center">
@@ -414,43 +414,43 @@ $distribuidoras = array(
                           <input v-model="simulatorForm.como_conheceu_a_quanta_geracao"
                             class="form-check-input conheceu-input" type="radio" name="como_conheceu"
                             id="como_conheceu_1" value="Indicação" required> <label
-                            class="form-check-label conheceu-label rounded" for="como_conheceu_1">Indicação</label>
+                            class="form-check-label conheceu-label rounded" for="como_conheceu_1" required="required">Indicação</label>
                         </div>
                         <div class="form-check form-check-inline conheceu-radio-group">
                           <input v-model="simulatorForm.como_conheceu_a_quanta_geracao"
                             class="form-check-input conheceu-input" type="radio" name="como_conheceu"
                             id="como_conheceu_2" value="Redes Sociais"><label
-                            class="form-check-label conheceu-label rounded" for="como_conheceu_2">Redes
+                            class="form-check-label conheceu-label rounded" for="como_conheceu_2" required="required">Redes
                             Sociais</label>
                         </div>
                         <div class="form-check form-check-inline conheceu-radio-group">
                           <input v-model="simulatorForm.como_conheceu_a_quanta_geracao"
                             class="form-check-input conheceu-input" type="radio" name="como_conheceu"
                             id="como_conheceu_3" value="Site"> <label class="form-check-label conheceu-label rounded"
-                            for="como_conheceu_3">Site</label>
+                            for="como_conheceu_3" required="required">Site</label>
                         </div>
                         <div class="form-check form-check-inline conheceu-radio-group">
                           <input v-model="simulatorForm.como_conheceu_a_quanta_geracao"
                             class="form-check-input conheceu-input" type="radio" name="como_conheceu"
                             id="como_conheceu_4" value="Google"> <label class="form-check-label conheceu-label rounded"
-                            for="como_conheceu_4">Google</label>
+                            for="como_conheceu_4" required="required">Google</label>
                         </div>
                         <div class="form-check form-check-inline conheceu-radio-group">
                           <input v-model="simulatorForm.como_conheceu_a_quanta_geracao"
                             class="form-check-input conheceu-input" type="radio" name="como_conheceu"
-                            id="como_conheceu_5" value="Lives/Eventos"><label
+                            id="como_conheceu_5" value="Lives/Eventos" required="required"><label
                             class="form-check-label conheceu-label rounded" for="como_conheceu_5">Lives/Eventos</label>
                         </div>
                         <div class="form-check form-check-inline conheceu-radio-group">
                           <input v-model="simulatorForm.como_conheceu_a_quanta_geracao"
                             class="form-check-input conheceu-input" type="radio" name="como_conheceu"
-                            id="como_conheceu_6" value="WhatsApp"> <label
+                            id="como_conheceu_6" value="WhatsApp" required="required"> <label
                             class="form-check-label conheceu-label rounded" for="como_conheceu_6">WhatsApp</label>
                         </div>
                         <div class="form-check form-check-inline conheceu-radio-group">
                           <input v-model="simulatorForm.como_conheceu_a_quanta_geracao"
                             class="form-check-input conheceu-input" type="radio" name="como_conheceu"
-                            id="como_conheceu_7" value="Outros"> <label class="form-check-label conheceu-label rounded"
+                            id="como_conheceu_7" value="Outros" required="required"> <label class="form-check-label conheceu-label rounded"
                             for="como_conheceu_7">Outros</label>
                         </div>
                       </div>
