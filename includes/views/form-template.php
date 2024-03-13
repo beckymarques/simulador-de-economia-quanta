@@ -461,7 +461,7 @@ $distribuidoras = array(
                       <div class="form-check">
                         <input v-model="simulatorForm.politica_privacidade" class="form-check-input" type="checkbox"
                           name="politca_privacidade" id="politca_privacidade" aria-describedby="politicaPrivacidadeErrorFeedback" required>
-                        <label class="form-check-label" for="politca_privacidade">Li e estou de acordo com a política de
+                        <label class="form-check-label" for="politca_privacidade"><span class="text-danger">*</span> Li e estou de acordo com a política de
                           privacidade da Quanta.</label>
                         <div id="politicaPrivacidadeErrorFeedback" class="invalid-feedback">
                           Por favor, concorde com a política de privacidade para continuar.
