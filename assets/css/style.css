@@ -112,7 +112,7 @@
 }
 #form-simulador #title-container h3 {
   font-size: 1.3em;
-  font-weight: 300;
+  font-weight: bold;
   color: #fff;
   padding: 0;
 }
@@ -289,6 +289,7 @@
   height: 50px;
   background: #1f8ece;
   margin-top: 40px;
+  margin-left: 10px;
   overflow: hidden;
   z-index: 1;
   cursor: pointer;
