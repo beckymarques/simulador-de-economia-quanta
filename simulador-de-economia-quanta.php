@@ -2,7 +2,7 @@
 /*
 Plugin Name: Simulador de Economia Quanta
 Description: Plugin para exibir o Simulador de Economia da Quanta Energia.
-Version: 1.9.4
+Version: 1.9.5
 Author: Becky Marques
 Author URI: https://github.com/beckymarques
 Requires at least: 6.1.3
@@ -48,7 +48,7 @@ if (!class_exists('SE_Quanta')) {
             define('SEQ_PLUGIN_URL', plugin_dir_url(__FILE__));
             define('SEQ_PLUGIN_ASSETS', plugin_dir_path(__FILE__) . '/assets/');
             define('SEQ_PLUGIN_VIEWS', plugin_dir_path(__FILE__) . '/includes/views/');
-            define('SEQ_PLUGIN_VERSION', '1.0.0');
+            define('SEQ_PLUGIN_VERSION', '1.9.5');
         }
 
         // Função que será executada na ativação do plugin
@@ -107,7 +107,7 @@ if (!class_exists('SE_Quanta')) {
             wp_register_style('se-choices', SEQ_PLUGIN_URL . 'vendor/choices.min.css');
             wp_register_style('se-plugin-style', SEQ_PLUGIN_URL . 'assets/css/style.min.css');
 
-            wp_register_script('se-jquery', SEQ_PLUGIN_URL . 'vendor/jquery.min.js', array(''), SEQ_PLUGIN_VERSION, true);
+            //wp_register_script('se-jquery', SEQ_PLUGIN_URL . 'vendor/jquery.min.js', array(''), SEQ_PLUGIN_VERSION, true);
             wp_register_script('se-script-maskmoney', SEQ_PLUGIN_URL . 'vendor/jquery.maskMoney.min.js', array('jquery'), SEQ_PLUGIN_VERSION, true);
             wp_register_script('se-script-mask', SEQ_PLUGIN_URL . 'vendor/jquery.mask.min.js', array('jquery'), SEQ_PLUGIN_VERSION, true);
             wp_register_script('se-script-choices', SEQ_PLUGIN_URL . 'vendor/choices.min.js', array('jquery'), SEQ_PLUGIN_VERSION, true);
