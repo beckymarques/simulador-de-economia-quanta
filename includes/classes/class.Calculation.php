@@ -201,7 +201,7 @@ if (! class_exists('SEQ_Calculation')) {
         return $this->error($e->getMessage(), 401);
       }
       
-      wp_die();
+      // wp_die();
     }
 	  
 	  /**
@@ -249,7 +249,7 @@ if (! class_exists('SEQ_Calculation')) {
 				return $this->error($e->getMessage(), 401);
       }
         
-      wp_die();
+      // wp_die();
     }
 	  
 	  /**

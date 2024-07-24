@@ -493,8 +493,14 @@ $background: #f7f9ff;
       transition: all 0.15s ease-in-out;
     }
   }
-  .choices::after {
-    display: none;
+  .select2-container--default .select2-selection--single{
+    border: 1px solid $primary;
+    padding: 7px 0 35px 0;
+  }
+  .select2-container--default .select2-selection--single .select2-selection__arrow {
+    top: 50%;
+    right: 0;
+    transform: translate(-50%, -50%);
   }
   input[type="radio"] {
     &:hover {

@@ -15,6 +15,7 @@
   let company = $('#company');
   let email = $('#email');
   let mobilephone = $('#mobilephone');
+  let distribuidora = $("#distribuidora");
   let gastosMensaisValor = $('#gastos_mensais_valor');
   let gastosMensaisUnidadesValor = $('#gastos_mensais_unidades_valor');
   let politicaPrivacidade = $('#politca_privacidade');
@@ -177,24 +178,19 @@
       } else {
         jQuery(".valor_demanda_kwh").fadeOut();
         jQuery("#valor_demanda_kwh").attr("required", false);
-        distribuidora.attr("required", false);
+        distribuidora.attr("required", true);
       }
     });
 
     //Select
-    const element = document.querySelector(".js-choice");
-    const choices = new Choices(element, {
-      classNames: {
-        containerInner: "form-select",
-      },
-      loadingText: "Carregando...",
-      noResultsText: "Nenhum resultado encontrado",
-      noChoicesText: "Nenhuma opção para escolher",
-      itemSelectText: "Clique para selecionar",
-      uniqueItemText: "Somente valores únicos podem ser adicionados",
-      customAddItemText:
-        "Somente valores que correspondam condições específicas podem ser adicionardas",
+    jQuery(document).ready(function() {
+      jQuery('.js-select2-dist').select2({
+        tags: true,
+        language: "pt-BR",
+        width: 'resolve'
+      });
     });
+
   });
 
   //Range
@@ -235,6 +231,7 @@
       initValidatePage2++;
       $("#gastos_mensais").on('change', validateExpenses);
       $("#gastos_mensais_unidades").on('change', validateExpenses);
+      $("#distribuidora").on('change', validateDistribuidora);
       gastosMensaisValor.on('blur', validateExpenses);
       gastosMensaisUnidadesValor.on('blur', validateExpenses);
     }
@@ -259,7 +256,10 @@
 
     if (current_step === 1 && !validateExpenses())
       return false;
-
+    
+    if (current_step === 1 && !validateDistribuidora())
+      return false;
+    
     if (current_step === 2 && !validatePoliticaPrivacidade())
       return false;
 
@@ -367,7 +367,19 @@ function validatemobilephone() {
 // END Validar mobilephone
 
 
-  //END Range
+// Validar Distribuidora
+
+function validateDistribuidora() {
+  if (distribuidora.val() == null || distribuidora.val() === '' ) {
+    updateFeedback(distribuidora, false);
+    return false;
+  }
+
+  distribuidora.removeClass('is-valid is-invalid');
+  return true;
+}
+//END Validar Nome
+  
 
   //Get URL Params
   function getQueryVariable(variable) {

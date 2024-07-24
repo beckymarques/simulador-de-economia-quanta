@@ -103,14 +103,14 @@ if (!class_exists('SE_Quanta')) {
          */
         public function seq_enqueue_scripts()
         {
-            wp_register_style('se-bootstrap', SEQ_PLUGIN_URL . 'vendor/bootstrap.min.css');
-            wp_register_style('se-choices', SEQ_PLUGIN_URL . 'vendor/choices.min.css');
+            wp_register_style('se-bootstrap', SEQ_PLUGIN_URL . 'vendor/bootstrap/bootstrap.min.css');
+            wp_register_style('se-select2', SEQ_PLUGIN_URL . 'vendor/select2/select2.min.css');
             wp_register_style('se-plugin-style', SEQ_PLUGIN_URL . 'assets/css/style.min.css');
 
             //wp_register_script('se-jquery', SEQ_PLUGIN_URL . 'vendor/jquery.min.js', array(''), SEQ_PLUGIN_VERSION, true);
-            wp_register_script('se-script-maskmoney', SEQ_PLUGIN_URL . 'vendor/jquery.maskMoney.min.js', array('jquery'), SEQ_PLUGIN_VERSION, true);
-            wp_register_script('se-script-mask', SEQ_PLUGIN_URL . 'vendor/jquery.mask.min.js', array('jquery'), SEQ_PLUGIN_VERSION, true);
-            wp_register_script('se-script-choices', SEQ_PLUGIN_URL . 'vendor/choices.min.js', array('jquery'), SEQ_PLUGIN_VERSION, true);
+            wp_register_script('se-script-maskmoney', SEQ_PLUGIN_URL . 'vendor/maskmoney/jquery.maskMoney.min.js', array('jquery'), SEQ_PLUGIN_VERSION, true);
+            wp_register_script('se-script-mask', SEQ_PLUGIN_URL . 'vendor/maskmoney/jquery.mask.min.js', array('jquery'), SEQ_PLUGIN_VERSION, true);
+            wp_register_script('se-script-select2', SEQ_PLUGIN_URL . 'vendor/select2/select2.min.js', array('jquery'), SEQ_PLUGIN_VERSION, true);
             wp_register_script('se-plugin-script', SEQ_PLUGIN_URL . 'assets/js/script.js', array('jquery'), SEQ_PLUGIN_VERSION, true);
         }
     }

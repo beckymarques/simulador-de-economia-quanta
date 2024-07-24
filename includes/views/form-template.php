@@ -355,11 +355,11 @@ $distribuidoras = array(
                 </div>
                 <div class="mt-3">
                   <div class="distribuidora">
-                    <div class="rotulo"><label for="distribuidora">Selecione a distribuidora</label></div>
+                    <div class="rotulo"><label for="distribuidora"><span class="text-danger">*</span> Selecione a distribuidora</label></div>
                     <div class="campo">
-                      <select ref="distribuidora" name="distribuidora" id="distribuidora" class="form-select js-choice"
-                        required>
-                        <option class="choices__item--disabled" value="" selected disabled>Selecione uma opção</option>
+                      <select v-model="simulatorForm.distribuidora" ref="distribuidora" name="distribuidora" id="distribuidora" class="form-select js-select2-dist"
+                        required style="width: 50%" aria-describedby="distribuidoraErrorFeedback">
+                        <option value="" selected disabled>Selecione uma opção</option>
                         <?php if (!empty($distribuidoras)) : ?>
                         <?php foreach ($distribuidoras as $item) : ?>
                         <option value="<?php echo $item['nome'] ?>">
@@ -368,6 +368,9 @@ $distribuidoras = array(
                         <?php endforeach; ?>
                         <?php endif; ?>
                       </select>
+                      <div id="distribuidoraErrorFeedback" class="invalid-feedback">
+                    {{ simulatorForm.distribuidora.trim() === "" ? "Este campo é obrigatório." : "Uma distribuidora precisa ser selecionada."}}
+                  </div>   
                     </div>
                   </div>
                 </div>
